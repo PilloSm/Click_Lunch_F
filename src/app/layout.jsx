@@ -6,6 +6,7 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata = {
   title: 'ClickLunch',
   description: 'artick monkeys god y el tercer album de mcr es god (no leo lloros)',
+  icon: 'https://i.ibb.co/nBySv9Y/logo-nobg.png'
 }
 
 export default function RootLayout({ children }) {
