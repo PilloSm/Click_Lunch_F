@@ -13,7 +13,7 @@ const DatosIngrediente = () => {
         </div>
 
           <div className="absolute w-[450px] h-[48px] top-[373px] left-[495px] bg-white border border-[#797979]">
-            <input type="number" placeholder="1" name="contrasena" min={1} className="absolute w-[438px] h-[35px] top-[4px] left-[5px] font-nunito font-normal bg-[white] text-black text-[24px] leading-normal tracking-normal border-none outline-none" onChange={handleCahnge}/>
+            <input type="number" placeholder="1" name="cantidad" min={1} className="absolute w-[438px] h-[35px] top-[4px] left-[5px] font-nunito font-normal bg-[white] text-black text-[24px] leading-normal tracking-normal border-none outline-none" onChange={handleCahnge}/>
           </div>
 
           <div className="absolute w-[450px] h-[48px] top-[504px] left-[495px] bg-white border border-[#797979]">
