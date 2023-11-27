@@ -95,7 +95,7 @@ function AlimentoForm() {
   };
 
   return (
-    <div className="flex ">
+    <div className="absolute left-[400px]">
       <form
         className="bg-white shadow-md rounded-md px-8 pt-6 pb-8 mb-4"
         onSubmit={handleSubmit}
@@ -195,8 +195,10 @@ function AlimentoForm() {
           />
         )}
 
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <button className="absolute w-[500px] h-[95px] top-[1000px] bg-[#25a18ee6] rounded-full border-none cursor-pointer">
+        <div className="absolute w-[523px] h-[20px] top-[37px] left-[0px] font-poppins-bold text-[white] text-[32px] text-center leading-[20px]">
           {params.id ? "Actualizar Producto" : "Crear Producto"}
+        </div>
         </button>
       </form>
     </div>

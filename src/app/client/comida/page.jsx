@@ -9,7 +9,7 @@ export default async function Comida(request) {
   return (
 
     <div className="bg-white flex flex-row justify-center w-full">
-      <div className="bg-white w-[1440px] h-[1024px] relative">
+      <div className="bg-white w-[1440px] h-[1324px] relative">
 
       <BtnOpciones/>
       
