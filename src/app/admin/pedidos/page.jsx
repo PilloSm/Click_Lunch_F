@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import CardCocina from "../../../components/CardCocina";
-import BarraSuperior from "../../../components/BarraSuperior";
+import BarraSuperiorAdmin from "@/components/BarraSuperiorAdmin";
 import axios from "axios";
 
 async function Pedidos() {
@@ -21,17 +21,51 @@ async function Pedidos() {
   return (
     <div className="bg-white flex flex-row justify-center w-full">
       <div className="w-[1440px] h-[1640px] flex flex-wrap justify-around bg-white relative">
-        <BarraSuperior />
+        <BarraSuperiorAdmin />
 
-        <div className="absolute top-[162px] left-[672px] font-nunito font-normal text-black text-[60px] text-center leading-normal tracking-normal">
-          Pedidos
-        </div>
 
-        {res.data.map((detalle) => {
-          <CardCocina comidas={detalle} />;
-        })}
+          <div className="absolute w-[431px] top-[202px] left-[572px] font-nunito font-normal text-black text-[60px] text-center leading-normal tracking-normal">1</div>
+            
+            {/* Carrusel 1 */}
+            <div className="top-[20px] relative w-[6000px] h-[480px] flex flex-nowrap overflow-scroll justify-start overflow-x-scroll overflow-y-hidden">
+            
+                  {res.data.map((detalle) => {
+                <CardCocina comidas={detalle} />;
+              })}
+              
+            </div>
 
-        <div className="top-[220px] left-[70px] relative w-full h-[1200px] flex flex-wrap overflow-scroll overflow-x-hidden overflow-y-scroll justify-start"></div>
+
+            <div className="absolute w-[431px] top-[820px] left-[570px] font-nunito font-normal text-black text-[64px] text-center leading-normal tracking-normal">2</div>
+
+            {/* Carrusel 2 */}
+            <div className="top-[-30px] relative w-[6000px] h-[480px] flex flex-nowrap overflow-scroll justify-start overflow-x-scroll overflow-y-hidden">
+              
+              <CardCocina/>
+              
+            </div>
+
+            <div className="absolute w-[431px] top-[1420px] left-[570px] font-nunito font-normal text-black text-[64px] text-center leading-normal tracking-normal">3</div>
+
+            {/* Carrusel 3 */}
+            <div className="top-[-50px] relative w-[6000px] h-[480px] flex flex-nowrap overflow-scroll justify-start overflow-x-scroll overflow-y-hidden">
+            
+              <CardCocina/>
+              
+            </div>
+
+            <div className="absolute w-[431px] top-[2120px] left-[570px] font-nunito font-normal text-black text-[64px] text-center leading-normal tracking-normal">4</div>
+            
+
+            {/* Carrusel 4 */}
+            <div className="top-[-50px] relative w-[6000px] h-[480px] flex flex-nowrap overflow-scroll justify-start overflow-x-scroll overflow-y-hidden">
+              
+              <CardCocina/>
+              
+            </div>
+
+
+
       </div>
     </div>
   );
