@@ -2,7 +2,6 @@
 
 import BtnOpcionesAdmin from "@/components/BtnOpcionesAdmin";
 import AlimentoCrear from "@/components/AlimentoCrear";
-import { signOut } from "next-auth/react";
 
 export default function IngresarComida() {
   return (
