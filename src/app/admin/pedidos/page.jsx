@@ -5,10 +5,18 @@ import BarraSuperior from "../../../components/BarraSuperior";
 import axios from "axios";
 
 async function Pedidos() {
-  const res = await axios.get(
-    "http://localhost:3000/api/apiCafeteria/pedidos/1"
+  const res1 = await axios.get(
+    "http://localhost:3000/api/apiCafeteria/pedidos/2"
   );
-  console.log(res.data);
+  const res2 = await axios.get(
+    "http://localhost:3000/api/apiCafeteria/pedidos/3"
+  );
+  const re3 = await axios.get(
+    "http://localhost:3000/api/apiCafeteria/pedidos/4"
+  );
+  const res4 = await axios.get(
+    "http://localhost:3000/api/apiCafeteria/pedidos/5"
+  );
 
   return (
     <div className="bg-white flex flex-row justify-center w-full">
