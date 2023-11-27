@@ -1,46 +1,76 @@
 import { conn } from "@/libs/db";
 import { NextResponse } from "next/server";
-import { v2 as cloudinary } from "cloudinary";
-
-cloudinary.config({
-  cloud_name: process.env.CLOUD_NAME,
-  api_key: process.env.CLOUD_KEY,
-  api_secret: process.env.CLOUD_SECRET,
-});
-
+import { processImage } from "@/libs/processImage";
+import cloudinary from "@/libs/cloudinary";
 export async function POST(request) {
   try {
-    const data = await request.json();
-    const imagen = data.imagen;
-    const bytes = await imagen.arrayBuffer();
-    const buffer = Buffer.from(bytes);
-    const filePath = path.join(process.cwd(), "public", data.nombre);
-    const res = await cloudinary.uploader.upload(filePath, {
-      public_id: data.nombre,
+    const data = await request.formData();
+    const image = data.get("image");
+
+    if (!data.get("name")) {
+      return NextResponse.json(
+        {
+          message: "Name is required",
+        },
+        {
+          status: 400,
+        }
+      );
+    }
+
+    if (!image) {
+      return NextResponse.json(
+        {
+          message: "Image is required",
+        },
+        {
+          status: 400,
+        }
+      );
+    }
+
+    const buffer = await processImage(image);
+
+    const res = await new Promise((resolve, reject) => {
+      cloudinary.uploader
+        .upload_stream(
+          {
+            resource_type: "image",
+          },
+          async (err, result) => {
+            if (err) {
+              console.log(err);
+              reject(err);
+            }
+
+            resolve(result);
+          }
+        )
+        .end(buffer);
     });
 
-    const comida = {
-      nombre: data.nombre,
-      tipo: data.tipo,
-      descripcion: data.descripcion,
-      precio: data.precio,
-      imagen: res.secure_url,
-    };
+    const result = await conn.query("INSERT INTO product SET ?", {
+      name: data.get("name"),
+      description: data.get("description"),
+      price: data.get("price"),
+      image: res.secure_url,
+    });
 
-    const result = await conn.query("INSERT into cat_comidas SET ?", comida);
-    if (result[0].affectedRows > 0) {
-      data.ingredientes.forEach(async (ingrediente) => {
-        const vIngrediente = {
-          id_comida: result[0].insertId,
-          id_ingrediente: ingrediente.id_ingrediente,
-          cantidad: ingrediente.cantidad,
-        };
-        await conn.query("INSERT into detalle_ingrediente SET ?", vIngrediente);
-      });
-      const res = await conn.query("SELECT * FROM cat_comidas");
-      return NextResponse.json(res[0]);
-    }
+    return NextResponse.json({
+      name: data.get("name"),
+      description: data.get("description"),
+      price: data.get("price"),
+      id: result.insertId,
+    });
   } catch (error) {
-    return NextResponse.json({ error: error }, { status: 400 });
+    console.log(error)
+    return NextResponse.json(
+      {
+        message: error.message,
+      },
+      {
+        status: 500,
+      }
+    );
   }
 }
