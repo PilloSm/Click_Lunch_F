@@ -12,10 +12,10 @@ export default async function TablaPedidos({ id_cuenta }) {
       cantidades.length === precios.length &&
       precios.length === nombresComidas.length
     ) {
-      const idPedido = resultado.id_pedido; // Agregamos la propiedad id_pedido
+      const idPedido = resultado.id_pedido;
 
       return cantidades.map((cantidad, index) => ({
-        id_pedido: idPedido, // Asignamos el id_pedido a cada objeto
+        id_pedido: idPedido,
         cantidad,
         precio: precios[index],
         nombre: nombresComidas[index],
@@ -63,14 +63,3 @@ export default async function TablaPedidos({ id_cuenta }) {
     </table>
   );
 }
-
-//   {
-//     id_pedido: 33,
-//     id_cuenta: 53,
-//     total: 40,
-//     estado_nombre: 'cancelado',
-//     fecha: '2023-11-27T04:31:19.000Z',
-//     cantidades_detalles: '1',
-//     precios_detalles: '40',
-//     nombres_comidas: 'taco'
-//   }

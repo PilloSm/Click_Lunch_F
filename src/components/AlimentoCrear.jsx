@@ -9,6 +9,7 @@ function AlimentoForm() {
     descripcion: "",
     precio: 0,
     ingredientes: [],
+    tipo: [],
   });
   const [file, setFile] = useState(null);
   const form = useRef(null);
@@ -32,20 +33,17 @@ function AlimentoForm() {
   };
 
   useEffect(() => {
-    // Lógica para cargar datos si es una actualización
-    // Hacer una solicitud para obtener datos del producto por su ID
     axios.get(`/api/apiCafeteria/ingredientes`).then((res) => {
-      const { nombre, descripcion, precio, imagen, ingredientes } = res.data;
+      const { nombre, descripcion, precio, imagen, ingredientes, tipo } =
+        res.data;
 
       setComidaN({
         nombre,
         descripcion,
         precio,
         ingredientes,
+        tipo,
       });
-
-      // Puedes manejar la imagen si es necesario (por ejemplo, mostrarla)
-      // setFile(imagen);
     });
   }, [params.id]);
 
@@ -58,12 +56,10 @@ function AlimentoForm() {
     formData.append("descripcion", comidaN.descripcion);
     formData.append("precio", comidaN.precio);
 
-    // Agregar lógica para manejar la imagen si es necesario
     if (file) {
       formData.append("imagen", file);
     }
 
-    // Agregar lógica para manejar ingredientes
     comidaN.ingredientes.forEach((ingrediente, index) => {
       formData.append(
         `ingredientes[${index}][id_ingrediente]`,
@@ -85,7 +81,6 @@ function AlimentoForm() {
 
       console.log("Respuesta del servidor:", res.data);
 
-      // Lógica adicional después de enviar los datos, por ejemplo, redireccionar
       form.current.reset();
       router.refresh();
       router.push("/productos");
@@ -181,6 +176,7 @@ function AlimentoForm() {
         </label>
         <input
           type="file"
+          accept="img/*"
           className="shadow appearance-none border rounded w-full py-2 px-3 mb-2"
           onChange={(e) => {
             setFile(e.target.files[0]);
@@ -196,7 +192,7 @@ function AlimentoForm() {
         )}
 
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          {params.id ? "Actualizar Producto" : "Crear Producto"}
+          Crear Producto
         </button>
       </form>
     </div>
