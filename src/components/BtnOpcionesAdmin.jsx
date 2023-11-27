@@ -12,7 +12,7 @@ const BtnOpcionesAdmin = () => {
           onClick={() => setIsOpen(!isOpen)}
           className="absolute w-[80px] h-[80px] top-[63px] left-[78px] cursor-pointer bg-transparent border-none cursor-[5]"
         >
-          <img src="img/menu/btn-opciones.png" alt="menu" />
+          <img src="https://i.ibb.co/hmdxg59/btn-opciones.png" alt="menu" />
         </button>
 
         {isOpen && (
@@ -26,7 +26,7 @@ const BtnOpcionesAdmin = () => {
               </button>
               <nav className="space-y-4">
                 <Link
-                  href="/menu-admin"
+                  href="/menu"
                   className="text-gray-300 hover:bg-gray-800 hover:border-l-4 hover:border-gray-300 hover:text-white block p-2 transition duration-200"
                 >
                   <img
@@ -36,8 +36,9 @@ const BtnOpcionesAdmin = () => {
                   />
                   Menú
                 </Link>
+
                 <Link
-                  href="/pedidos"
+                  href="/admin/pedidos"
                   className="text-gray-300 hover:bg-gray-800 hover:border-l-4 hover:border-gray-300 hover:text-white block p-2 transition duration-200"
                 >
                   <img
@@ -47,8 +48,9 @@ const BtnOpcionesAdmin = () => {
                   />
                   Pedidos
                 </Link>
+
                 <Link
-                  href="/agregar-saldo-admin"
+                  href="/admin/agregarSaldo"
                   className="text-gray-300 hover:bg-gray-800 hover:border-l-4 hover:border-gray-300 hover:text-white block p-2 transition duration-200"
                 >
                   <img
@@ -58,16 +60,29 @@ const BtnOpcionesAdmin = () => {
                   />
                   Agregar Saldo
                 </Link>
+
                 <Link
-                  href="/cuenta"
+                  href="/admin/comidas"
                   className="text-gray-300 hover:bg-gray-800 hover:border-l-4 hover:border-gray-300 hover:text-white block p-2 transition duration-200"
                 >
                   <img
                     className="pl-[4px]"
-                    src="/img/sidebar/user-icon.png"
+                    src="/img/sidebar/icons8-barra-de-comida-24.png"
                     alt=""
                   />
-                  Administrador
+                  Comidas
+                </Link>
+
+                <Link
+                  href="/admin/ingredientes"
+                  className="text-gray-300 hover:bg-gray-800 hover:border-l-4 hover:border-gray-300 hover:text-white block p-2 transition duration-200"
+                >
+                  <img
+                    className="pl-[4px]"
+                    src="/img/sidebar/lechuga.png"
+                    alt=""
+                  />
+                  Ingredientes
                 </Link>
                 <button
                   onClick={() => {

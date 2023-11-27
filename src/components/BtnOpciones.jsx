@@ -13,7 +13,7 @@ const BtnOpciones = () => {
           onClick={() => setIsOpen(!isOpen)}
           className="absolute w-[80px] h-[80px] top-[63px] left-[78px] cursor-pointer bg-transparent border-none cursor-[5]"
         >
-          <img src="@/public/img/menu/btn-opciones.png" alt="menu" />
+          <img src="https://i.ibb.co/hmdxg59/btn-opciones.png" alt="menu" />
         </button>
 
         {isOpen && (
@@ -59,7 +59,12 @@ const BtnOpciones = () => {
                   />
                   Perfil
                 </Link>
-                <Link href={"/client/pedidos/"+session.user.id_cuenta}>
+                <Link href={"/client/pedidos/" + session.user.id_cuenta}>
+                  <img
+                    className="pl-[4px]"
+                    src="/img/sidebar/reloj.png"
+                    alt=""
+                  />
                   <div>Pedidos</div>
                 </Link>
               </nav>
