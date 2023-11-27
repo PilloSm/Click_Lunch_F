@@ -2,6 +2,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import DatosIngrediente from "@/components/DatosIngrediente";
 
 export default function Ingredientes() {
   const [datos, setDatos] = useState({
@@ -28,10 +29,6 @@ export default function Ingredientes() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label></label>
-      <input onChange={handleCahnge} />
-      <button></button>
-    </form>
+    <DatosIngrediente/>
   );
 }
