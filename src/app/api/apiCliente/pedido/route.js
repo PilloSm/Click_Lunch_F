@@ -22,16 +22,38 @@ export async function POST(request) {
           "INSERT into det_pedido SET ?",
           insertado
         );
+        const ingredientes = await conn.query(
+          `SELECT id_comida, cantidad from det_pedido where id_pedido =${querys[0].insertId};`
+        );
+        ingredientes[0].forEach(async (element) => {
+          const res = await conn.query(
+            `SELECT id_ingrediente, cantidad from det_ingrediente where id_comida=${element.id_comida}`
+          );
+          res[0].forEach(async (elemento) => {
+            const sas = await conn.query(
+              `UPDATE cat_ingredientes set cantidad=cantidad-${element.cantidad}*${elemento.cantidad} where id_ingrediente = ${elemento.id_ingrediente}`
+            );
+            if (sas.error) NextResponse.json({ error: error }, { status: 500 });
+            const upd = await conn.query(
+              `insert into extras_ingredientes set ?`,
+              {
+                id_ingredientes: elemento.id_ingrediente,
+                cantidad: (element.cantidad * elemento.cantidad),
+                tipo: false,
+              }
+            );
+          });
+        });
       });
       const quitarS = await conn.query(
         "Update cat_usuarios set saldo=saldo-? where id_cuenta =?",
         [data.total, data.id_cuenta]
       );
+
       return NextResponse.json({ message: "Se ha realizado el pedido" });
     }
     return NextResponse.json({ message: "Ha ocurrido un error al subir" });
   } catch (error) {
-    console.log(error);
     return NextResponse.json(
       { error: "Ups ha habido un error" },
       { status: 500 }
@@ -67,4 +89,3 @@ WHERE
     );
   }
 }
-
