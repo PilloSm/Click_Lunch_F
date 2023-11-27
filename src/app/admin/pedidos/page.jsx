@@ -13,6 +13,8 @@ function Pedidos(){
 
         <div className="absolute top-[162px] left-[672px] font-nunito font-normal text-black text-[60px] text-center leading-normal tracking-normal">Pedidos</div>
 
+        {/* Mandar los pedidos */}
+        <CardCocina/>
 
         <div className="top-[220px] left-[70px] relative w-full h-[1200px] flex flex-wrap overflow-scroll overflow-x-hidden overflow-y-scroll justify-start">
 
