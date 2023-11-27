@@ -1,33 +1,13 @@
 "use client";
-import Link from "next/link";
-import Image from "next/image";
 import React, { useState } from "react";
-import Navbar from "../../../components/Navbar";
 import BtnOpciones from "../../../components/BtnOpciones";
 import { useSession } from "next-auth/react";
 import BtonPedir from "@/components/btonPedis";
-import TablaCarrito from "@/components/TablaCarrito";
 
 function Carrito() {
   const { data: session, update } = useSession();
-console.log(session)
   const carrito = session.user.carrito;
 
-  const handleE = (id_comida) => {
-    const carritoFiltrado = carrito.comidas.filter(
-      (item) => item.id_comida !== id_comida
-    );
-
-    const totalActualizado = carritoFiltrado.reduce(
-      (total, item) => total + item.subtotal,
-      0
-    );
-    const carritoN = {
-      total: totalActualizado,
-      comidas: carritoFiltrado,
-    };
-    update({ carrito: carritoN });
-  };
   return (
     <div className="bg-white flex flex-row justify-center w-full;">
       <div className="bg-white w-[1440px] h-[1024px] relative">
@@ -54,12 +34,34 @@ console.log(session)
             <tbody>
               {carrito.comidas.map((item) => (
                 <>
-                  <TablaCarrito
-                    alimento={item.id_comida}
-                    cantidad={item.cantidad}
-                    subtotal={item.subtotal}
-                  />
-                  <button onClick={handleE(item.id_comida)}>Eliminar</button>
+                  <tr>
+                    <td>{item.nombre}</td>
+                    <td>{item.cantidad}</td>
+                    <td>${item.subtotal}</td>
+                    <button
+                      onClick={() => {
+                        const handleE = (id_comida) => {
+                          const carritoFiltrado = carrito.comidas.filter(
+                            (item) => item.id_comida !== id_comida
+                          );
+
+                          const totalActualizado = carritoFiltrado.reduce(
+                            (total, item) => total + item.subtotal,
+                            0
+                          );
+                          const carritoN = {
+                            total: totalActualizado,
+                            comidas: carritoFiltrado,
+                          };
+                          update({ carrito: carritoN });
+                        };
+
+                        handleE(item.id_comida);
+                      }}
+                    >
+                      Eliminar
+                    </button>
+                  </tr>
                 </>
               ))}
             </tbody>
@@ -77,6 +79,17 @@ console.log(session)
         </div>
         <div className="babsolute w-[893px] h-[88px] top-[743px] left-[562px]">
           <BtonPedir
+            onClick={() => {
+              const handleE = () => {
+                const carritoN = {
+                  total: 0,
+                  comidas: [],
+                };
+                update({ carrito: carritoN });
+              };
+              handleE(item.id_comida);
+            }}
+            saldo={session.user.saldo}
             carrito={session.user.carrito}
             id_cuenta={session.user.id_cuenta}
           />

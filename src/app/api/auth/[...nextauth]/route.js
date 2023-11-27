@@ -20,7 +20,6 @@ const handler = nextAuth({
           email: credentials.email,
           password: credentials.password,
         };
-        console.log(usuarioBuscar.email);
         const res = await conn.query(
           "SELECT * FROM cat_usuarios WHERE email=?",
           usuarioBuscar.email
@@ -42,7 +41,6 @@ const handler = nextAuth({
       if (trigger === "update" && session?.carrito) {
         token.carrito = session.carrito;
       }
-      console.log(token);
       return token;
     },
     async session({ session, token }) {
@@ -50,10 +48,9 @@ const handler = nextAuth({
         "SELECT id_cuenta, nombre, email, saldo, tipo from cat_usuarios where email=?",
         token.user.email
       );
-      console.log(token);
-      const usuario = { ...res[0][0], carrito: { total: 0 , comidas: [] } };
+      const usuario = { ...res[0][0], carrito: { total: 0, comidas: [] } };
       if (token.carrito) {
-        const usuario = { ...res[0][0], ...token.carrito };
+        const usuario = { ...res[0][0], carrito: { ...token.carrito } };
         session.user = usuario;
         return session;
       }

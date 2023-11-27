@@ -3,19 +3,14 @@
 import BtnOpciones from "@/components/BtnOpciones";
 import DatosCuenta from "@/components/DatosCuenta";
 import { signOut, useSession } from "next-auth/react";
+export default function Informacion(request) {
+  const { data: session, update } = useSession();
 
-export default function Informacion() {
-  const mostrarAlerta = () => {
-    swal({
-      title: "Eliminar cuenta",
-      text: "¿Estás seguro que quieres eliminar la cuenta?",
-      denyButtonText: "No",
-      confirmButtonText: "Yes",
-      icon: "warning",
-    });
-  };
-  const session = useSession();
-
+  const { searchParams } = request;
+  if (searchParams.borrar === "si") {
+    const borrar = { total: 0, comidas: [] };
+    update({ carrito: borrar });
+  }
   return (
     <div className="bg-white flex flex-row justify-center w-full">
       <div className="bg-white w-[1440px] h-[1024px] relative">
@@ -23,13 +18,13 @@ export default function Informacion() {
           Mi perfil
         </div>
         <BtnOpciones />
-        {session?.data ? (
+        {session ? (
           <div>
             <DatosCuenta
-              id_cuenta={session.data.user.id_cuenta}
-              usuarios={session.data.user.nombre}
-              correo={session.data.user.email}
-              saldo={session.data.user.saldo}
+              id_cuenta={session.user.id_cuenta}
+              usuarios={session.user.nombre}
+              correo={session.user.email}
+              saldo={session.user.saldo}
             />
             <button
               onClick={() => {
@@ -44,7 +39,8 @@ export default function Informacion() {
           </div>
         ) : (
           <div className="absolute max-w-500 top-[195px] left-[430px] bg-gray border-1 border-ddd p-20">
-          <h1 className="text-3xl text-3f3131">No hay cuenta</h1> </div>
+            <h1 className="text-3xl text-3f3131">No hay cuenta</h1>{" "}
+          </div>
         )}
       </div>
     </div>
