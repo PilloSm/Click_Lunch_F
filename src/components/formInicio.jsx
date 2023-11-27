@@ -47,7 +47,7 @@ export default function FormInicio() {
   };
   return (
     <div className="bg-white flex flex-row justify-center w-full">
-      <div className="bg-white w-[1440px] h-[1324px] relative">
+      <div className="bg-white w-[1440px] h-[1424px] relative">
         <img
           className="absolute w-[322px] h-[262px] top-[85px] left-[559px]"
           src="https://i.ibb.co/g9czN3L/logo.png"
@@ -88,7 +88,7 @@ export default function FormInicio() {
               onChange={handleChange}
             />
           </div>
-          <button className="absolute w-[698px] h-[95px] top-[759px] left-[371px] bg-[#25a18ee6] rounded-full border-none cursor-pointer">
+          <button className="absolute w-[698px] h-[95px] top-[859px] left-[371px] bg-[#25a18ee6] rounded-full border-none cursor-pointer">
             <div className="absolute w-[523px] h-[20px] top-[37px] left-[87px] font-poppins-bold text-[white] text-[32px] text-center leading-[20px]">
               Iniciar sesión
             </div>
@@ -96,18 +96,19 @@ export default function FormInicio() {
         </form>
 
         <Link href="/registrar">
-          <p className="absolute w-404 top-[903px] left-[540px] font-normal text-blue-500 text-2xl text-center underline">
+          <p className="absolute w-404 top-[1003px] left-[540px] font-normal text-blue-500 text-2xl text-center underline">
             ¿No tienes cuenta? Regístrate
           </p>
         </Link>
 
-        <div className="absolute w-404 top-[996px] left-[370px] border-t border-gray-500 w-[300px]"></div>
-        <p className="absolute w-404 top-[983px] left-[700px] text-2xl text-center">
+        <div className="absolute w-404 top-[1096px] left-[370px] border-t border-gray-500 w-[300px]"></div>
+        <p className="absolute w-404 top-[1083px] left-[700px] text-2xl text-center">
           ó
         </p>
-        <div className="absolute w-404 top-[996px] left-[740px] border-t border-gray-500 w-[320px]"></div>
+        <div className="absolute w-404 top-[1096px] left-[740px] border-t border-gray-500 w-[320px]"></div>
         <ReCAPTCHA
           sitekey="6LcY1x0pAAAAAJP9oTr0OHHCjlVu1ZIggttWZsYa "
+          className="absolute top-[729px] left-[551px]"
           onChange={setCaptcha}
         />
         <button
@@ -118,7 +119,7 @@ export default function FormInicio() {
               alert("Ingresa el captcha");
             }
           }}
-          className="absolute w-[698px] h-[95px] top-[1050px] left-[371px] bg-[#EFEFEF] rounded-full border-none cursor-pointer"
+          className="absolute w-[698px] h-[95px] top-[1150px] left-[371px] bg-[#EFEFEF] rounded-full border-none cursor-pointer"
         >
           <div className="absolute w-[523px] h-[20px] top-[37px] left-[87px] font-poppins-bold text-black text-[32px] text-center leading-[20px]">
             <img
