@@ -4,12 +4,15 @@ import { useRef, useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 
 function AlimentoForm() {
+  const [numeroIteraciones, setNumeroIteraciones] = useState(1);
   const [comidaN, setComidaN] = useState({
     nombre: "",
     descripcion: "",
     precio: 0,
-    ingredientes: [],
-    tipo: [],
+  });
+  const [datos, setDatos] = useState({
+    ingrediente: [],
+    tipo: "",
   });
   const [file, setFile] = useState(null);
   const form = useRef(null);
@@ -23,33 +26,46 @@ function AlimentoForm() {
     });
   };
 
-  const handleIngredientChange = (index, e) => {
-    const updatedIngredientes = [...comidaN.ingredientes];
-    updatedIngredientes[index][e.target.name] = e.target.value;
-    setComidaN({
-      ...comidaN,
-      ingredientes: updatedIngredientes,
-    });
+  const handleIngredientChange = (id_ingrediente, cantidad) => {
+    const ingredienteExistente = ingredientesSeleccionados.find(
+      (ingrediente) => ingrediente.id_ingrediente === id_ingrediente
+    );
+
+    if (ingredienteExistente) {
+      const nuevosIngredientes = ingredientesSeleccionados.map((ingrediente) =>
+        ingrediente.id_ingrediente === id_ingrediente
+          ? { ...ingrediente, cantidad }
+          : ingrediente
+      );
+
+      setIngredientesSeleccionados(nuevosIngredientes);
+    } else {
+      setIngredientesSeleccionados([
+        ...ingredientesSeleccionados,
+        { id_ingrediente, cantidad },
+      ]);
+    }
   };
 
   useEffect(() => {
     axios.get(`/api/apiCafeteria/ingredientes`).then((res) => {
-      const { nombre, descripcion, precio, imagen, ingredientes, tipo } =
+      const { nombre, descripcion, precio, imagen, ingredientes, tipos } =
         res.data;
-
+      console.log(res.data.ingredientes);
       setComidaN({
-        nombre,
-        descripcion,
-        precio,
-        ingredientes,
-        tipo,
+        nombre: nombre,
+        descripcion: descripcion,
+        precio: precio,
+      });
+      setDatos({
+        ingrediente: ingredientes,
+        tipo: tipos,
       });
     });
-  }, [params.id]);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const formData = new FormData();
 
     formData.append("nombre", comidaN.nombre);
@@ -83,7 +99,7 @@ function AlimentoForm() {
 
       form.current.reset();
       router.refresh();
-      router.push("/productos");
+      router.push("/admin/pedidos");
     } catch (error) {
       console.error("Error al enviar la comida:", error);
     }
@@ -141,33 +157,75 @@ function AlimentoForm() {
           value={comidaN.precio}
           className="shadow appearance-none border rounded w-full py-2 px-3"
         />
-
-        {/* Campos para ingredientes */}
-        <label className="block text-gray-700 text-sm font-bold mb-2">
-          Ingredientes:
-        </label>
-        {comidaN.ingredientes.map((ingrediente, index) => (
-          <div key={index} className="mb-2">
-            <input
-              type="text"
-              name={`ingredientes[${index}].nombre`}
-              placeholder="Nombre del ingrediente"
-              value={ingrediente.nombre || ""}
-              onChange={(e) => handleIngredientChange(index, e)}
-              className="shadow appearance-none border rounded w-full py-2 px-3 mb-2"
-            />
+        <div>
+          <label>
+            Número de Ingredientes:
             <input
               type="number"
-              name={`ingredientes[${index}].cantidad`}
-              placeholder="Cantidad"
-              value={ingrediente.cantidad || ""}
-              onChange={(e) => handleIngredientChange(index, e)}
-              className="shadow appearance-none border rounded w-full py-2 px-3 mb-2"
+              min={1}
+              value={numeroIteraciones}
+              onChange={(e) =>
+                setNumeroIteraciones(parseInt(e.target.value, 10))
+              }
             />
-          </div>
-        ))}
-        {/* Agregar más lógica según sea necesario */}
+          </label>
 
+          {[...Array(numeroIteraciones)].map((_, index) => (
+            <div key={index}>
+              <label>
+                Ingrediente {index + 1}:
+                <select
+                  name={`select-${index}`}
+                  onChange={(e) =>
+                    handleIngredientChange(
+                      index,
+                      "id_ingrediente",
+                      e.target.value
+                    )
+                  }
+                >
+                  <option value="">Seleccionar Ingrediente</option>
+                  {datos.ingredientes.map((ingrediente) => (
+                    <option
+                      key={ingrediente.id_ingrediente}
+                      value={ingrediente.id_ingrediente}
+                    >
+                      {ingrediente.nombre}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label>
+                Cantidad:
+                <input
+                  type="number"
+                  name={`cantidad-${index}`} // Nombre único para cada input
+                  min={1}
+                  onChange={(e) =>
+                    handleIngredientChange(index, "cantidad", e.target.value)
+                  }
+                  placeholder="Cantidad"
+                />
+              </label>
+            </div>
+          ))}
+        </div>
+        <select
+          name="tipo"
+          onChange={(e) => {
+            setDatos({
+              ...datos,
+              [e.target.name]: e.target.value,
+            });
+          }}
+        >
+          <option value="">Seleccinart tipo</option>
+          {comidaN.tipos.map((item, i) => (
+            <option key={item.id_tipos} value={item.id_tipos}>
+              {item.nombre}
+            </option>
+          ))}
+        </select>
         <label
           htmlFor="imagen"
           className="block text-gray-700 text-sm font-bold mb-2"
