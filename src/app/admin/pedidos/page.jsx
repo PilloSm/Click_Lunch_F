@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import CardCocina from "../../../components/CardCocina";
+import CardPedidos from "@/components/CardPedidos";
 import BarraSuperiorAdmin from "@/components/BarraSuperiorAdmin";
 import axios from "axios";
 
@@ -30,7 +31,7 @@ async function Pedidos() {
             <div className="top-[20px] relative w-[6000px] h-[480px] flex flex-nowrap overflow-scroll justify-start overflow-x-scroll overflow-y-hidden">
             
                   {res.data.map((detalle) => {
-                <CardCocina comidas={detalle} />;
+                <CardPedidos comidas={detalle} />;
               })}
               
             </div>
@@ -41,7 +42,7 @@ async function Pedidos() {
             {/* Carrusel 2 */}
             <div className="top-[-30px] relative w-[6000px] h-[480px] flex flex-nowrap overflow-scroll justify-start overflow-x-scroll overflow-y-hidden">
               
-              <CardCocina/>
+              <CardPedidos/>
               
             </div>
 
@@ -50,7 +51,7 @@ async function Pedidos() {
             {/* Carrusel 3 */}
             <div className="top-[-50px] relative w-[6000px] h-[480px] flex flex-nowrap overflow-scroll justify-start overflow-x-scroll overflow-y-hidden">
             
-              <CardCocina/>
+              <CardPedidos/>
               
             </div>
 
@@ -60,7 +61,7 @@ async function Pedidos() {
             {/* Carrusel 4 */}
             <div className="top-[-50px] relative w-[6000px] h-[480px] flex flex-nowrap overflow-scroll justify-start overflow-x-scroll overflow-y-hidden">
               
-              <CardCocina/>
+              <CardPedidos/>
               
             </div>
 
