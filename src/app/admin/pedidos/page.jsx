@@ -2,8 +2,11 @@ import Link from "next/link"
 import Image from "next/image"
 import CardCocina from "../../../components/CardCocina"
 import BarraSuperior from "../../../components/BarraSuperior"
+import axios from "axios"
 
-function Pedidos(){
+async function Pedidos(){
+  const res= await axios.get('http://localhost:3000/api/apiCafeteria/pedidos/1')
+  console.log(res)
     
     return(
       <div className="bg-white flex flex-row justify-center w-full">

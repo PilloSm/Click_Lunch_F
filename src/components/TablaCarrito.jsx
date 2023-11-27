@@ -1,4 +1,3 @@
-import React from "react";
 
 const TablaCarrito = ({ alimento, cantidad, subtotal }) => {
   return (

@@ -23,7 +23,6 @@ export default function FormComida({ comidas }) {
       axios
         .get(`http://localhost:3000/api/apiCliente/menu/${comidas}`)
         .then((response) => {
-          console.log(response);
           const data = response.data;
           if (data) {
             setPlatillo(data[0]);
@@ -101,16 +100,12 @@ export default function FormComida({ comidas }) {
               subtotal: platillo.precio * comida.cantidad,
               cantidadM: platillo.cantidad_preparable,
             };
-            console.log(nuvo);
             const elemento = { ...comida, ...nuvo };
             const cart = [...session.user.carrito.comidas, elemento];
-            console.log(cart);
-            console.log("sa");
             const carritoF = {
               total: precioT,
               comidas: cart,
             };
-            console.log(carritoF);
             update({ carrito: carritoF });
             router.push("/client/carrito");
           }

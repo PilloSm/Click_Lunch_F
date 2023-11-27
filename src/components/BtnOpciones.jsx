@@ -2,9 +2,10 @@
 import React from "react";
 import { useState } from "react";
 import Link from "next/link";
-
+import { useSession } from "next-auth/react";
 const BtnOpciones = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const {data:session}=useSession()
   return (
     <div className="container mx-auto px-4">
       <div className="flex items-center justify-between py-2">
@@ -57,6 +58,9 @@ const BtnOpciones = () => {
                     alt=""
                   />
                   Perfil
+                </Link>
+                <Link href={"/client/pedidos/"+session.user.id_cuenta}>
+                  <div>Pedidos</div>
                 </Link>
               </nav>
             </div>

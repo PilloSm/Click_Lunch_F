@@ -7,7 +7,7 @@ export async function POST(request) {
     const pedido = {
       id_cuenta: data.id_cuenta,
       total: data.total,
-      estado: 1,
+      estado: 2,
     };
     const querys = await conn.query("INSERT into m_pedidos set ?", pedido);
     if (querys[0].affectedRows > 0) {
@@ -42,7 +42,7 @@ export async function POST(request) {
 export async function PUT(request) {
   try {
     const data = await request.json();
-    const id = data.id
+    const id = data.id;
     const res = await conn.query(`SELECT
   m.id_pedido,
   m.estado,
@@ -57,13 +57,14 @@ JOIN
 WHERE
   m.id_cuenta=${id} and m.estado!=6
 `);
-console.log(res)
+    console.log(res);
     return NextResponse.json(res[0]);
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return NextResponse.json(
       { message: "ups ha habido un error" },
       { status: 500 }
     );
   }
 }
+

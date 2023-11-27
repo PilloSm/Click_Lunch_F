@@ -4,11 +4,10 @@ import { NextResponse } from "next/server";
 export async function PUT(request) {
   try {
     const data = await request.json();
-
-    const idCuenta = parseInt(data.id, 10);
+    const correo = data.id;
     const saldoMas = parseFloat(data.saldoMas);
 
-    if (isNaN(idCuenta) || isNaN(saldoMas)) {
+    if (isNaN(saldoMas)) {
       return NextResponse.json(
         { error: "Los datos proporcionados no son válidos." },
         { status: 400 }
@@ -16,15 +15,16 @@ export async function PUT(request) {
     }
 
     const saldo = await conn.query(
-      "SELECT saldo from cat_usuarios where id_cuenta=?",
-      idCuenta
+      "SELECT saldo, id_cuenta from cat_usuarios where email=?",
+      correo
     );
+    const idCuenta = saldo[0][0].id_cuenta;
 
     const saldoNuevo = saldo[0][0].saldo + saldoMas;
 
     const res = await conn.query(
-      "UPDATE cat_usuarios SET saldo = ? WHERE id_cuenta = ?",
-      [saldoNuevo, idCuenta]
+      "UPDATE cat_usuarios SET saldo = ? WHERE email = ?",
+      [saldoNuevo, correo]
     );
     if (res[0].affectedRows > 0) {
       const res = await conn.query("insert into m_pedidos set ?", {
@@ -32,7 +32,7 @@ export async function PUT(request) {
         total: saldoMas,
         estado: 6,
       });
-      return NextResponse.json(res[0]);
+      return NextResponse.json({message:'todo bien',saldo:saldoNuevo},{status:200});
     } else {
       return NextResponse.json(
         { message: "Ha ocurrido un error" },

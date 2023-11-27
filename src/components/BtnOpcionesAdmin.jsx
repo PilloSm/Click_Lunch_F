@@ -2,7 +2,7 @@
 import React from "react";
 import { useState } from "react";
 import Link from "next/link";
-
+import { signOut } from "next-auth/react";
 const BtnOpcionesAdmin = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -69,6 +69,13 @@ const BtnOpcionesAdmin = () => {
                   />
                   Administrador
                 </Link>
+                <button
+                  onClick={() => {
+                    signOut();
+                  }}
+                >
+                  Cerrar sesion
+                </button>
               </nav>
             </div>
           </div>

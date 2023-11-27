@@ -1,9 +1,4 @@
 "use client";
-import Link from "next/link";
-import Image from "next/image";
-import TablaHistorial from "../../../components/TablaHistorial";
-import SaldoInfo from "../../../components/SaldoInfo";
-import BtnOpciones from "../../../components/BtnOpciones";
 import BtnOpcionesAdmin from "../../../components/BtnOpcionesAdmin";
 import { useState } from "react";
 import Swal from "sweetalert2";
@@ -25,7 +20,6 @@ function AgregarSaldoAdmin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Muestra una alerta de confirmación con SweetAlert
     const confirmacion = await Swal.fire({
       title: "¿Son correctos los datos?",
       icon: "question",
@@ -34,7 +28,6 @@ function AgregarSaldoAdmin() {
       cancelButtonText: "No",
     });
 
-    // Si el usuario confirma, realiza la solicitud
     if (confirmacion.isConfirmed) {
       try {
         const res = await axios.put(
@@ -42,12 +35,9 @@ function AgregarSaldoAdmin() {
           datos
         );
 
-        // Verifica el estado de la respuesta
         if (res.data.status === 200) {
-          // Llama a la función sweetAlert si la respuesta es exitosa
           sweetAlert();
 
-          // Muestra un SweetAlert adicional para indicar que todo salió bien
           await Swal.fire({
             title: "¡Éxito!",
             text: "La solicitud se ha completado exitosamente.",
@@ -55,11 +45,9 @@ function AgregarSaldoAdmin() {
           });
         } else {
           console.error("Error en la respuesta:", res.data);
-          // Puedes manejar el error de alguna manera aquí
         }
       } catch (error) {
         console.error("Error en la solicitud:", error);
-        // Puedes manejar el error de alguna manera aquí
       }
     }
   };
