@@ -56,16 +56,16 @@ function AgregarSaldoAdmin() {
     <div className="bg-white flex flex-row justify-center w-full">
       <div className="bg-white w-[1440px] h-[1024px] relative">
         <BtnOpcionesAdmin />
-        <div className="absolute w-[452px] top-[459px] left-[125px] font-nunito font-normal text-black text-[64px] text-center leading-normal tracking-normal">
+        <div className="absolute w-[431px] top-[80px] left-[504px] font-nunito font-normal text-black text-[64px] text-center leading-normal tracking-normal">
           Agregar Saldo
         </div>
 
-        <div className="absolute top-[615px] left-[270px] font-nunito font-normal text-black text-[30px] text-center leading-normal tracking-normal whitespace-nowrap">
+        <div className="absolute top-[230px] left-[657px] font-nunito font-normal text-black text-[30px] text-center leading-normal tracking-normal whitespace-nowrap">
           $
         </div>
         <form onSubmit={handleSubmit}>
           <input name="id" onChange={handleChange} />
-          <div className="absolute w-[206px] h-[49px] top-[612px] left-[298px] rounded-[10px]">
+          <div className="absolute w-[206px] h-[49px] top-[230px] left-[687px] rounded-[10px]">
             <select
               className="w-[100px] h-[49px] text-[28px] cursor-pointer py-2 px-3 h-[42px] outline-none border-0 rounded-none bg-[#f0f0f0] text-black text-base font-nunito border-2 border-[rgba(0,0,0,0.2)] focus:border-[#47cdb8] rounded-[12px] relative transition-all duration-200 ease-in"
               name="saldoMas"
@@ -77,8 +77,8 @@ function AgregarSaldoAdmin() {
               <option>200</option>
             </select>
           </div>
-          <button className="absolute w-[660px] h-[95px] top-[780px] left-[20px] bg-[#25a18ee6] rounded-full border-none cursor-pointer">
-            <div className="absolute w-[523px] h-[20px] top-[37px] left-[87px] font-poppins-bold text-[white] text-[32px] text-center leading-[20px]">
+          <button className="absolute w-[660px] h-[95px] top-[500px] left-[400px] bg-[#25a18ee6] rounded-full border-none cursor-pointer">
+            <div className="absolute w-[523px] h-[20px] top-[37px] left-[80px] font-poppins-bold text-[white] text-[32px] text-center leading-[20px]">
               Agregar
             </div>
           </button>
