@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import logo from "../../public/img/index/logo.png";
 import Link from "next/link";
-import { redirects } from "../../next.config";
+import ReCAPTCHA from "react-google-recaptcha";
 export default function FormInicio() {
   const { data: session } = useSession();
   const router = useRouter();
@@ -15,6 +15,7 @@ export default function FormInicio() {
     email: "",
     password: "",
   });
+  const [captcha, setCaptcha] = useState();
   const [error, setError] = useState("");
   const handleChange = (e) => {
     setCredentials({
@@ -24,20 +25,24 @@ export default function FormInicio() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const res = await signIn("credentials", {
-        ...credentials,
-        redirect: false,
-      });
-      console.log(res);
-      if (res?.error) setError(res.error);
-      console.log(session);
-      if (session) {
+    if (captcha) {
+      try {
+        const res = await signIn("credentials", {
+          ...credentials,
+          redirect: false,
+        });
+        console.log(res);
+        if (res?.error) setError(res.error);
         console.log(session);
+        if (session) {
+          console.log(session);
+        }
+        if (res.status === 200) router.push("/menu");
+      } catch (error) {
+        setError(error);
       }
-      if (res.status === 200) router.push("/menu");
-    } catch (error) {
-      setError(error);
+    } else {
+      alert("Ingresa el captcha");
     }
   };
   return (
@@ -101,10 +106,17 @@ export default function FormInicio() {
           ó
         </p>
         <div className="absolute w-404 top-[996px] left-[740px] border-t border-gray-500 w-[320px]"></div>
-
+        <ReCAPTCHA
+          sitekey="6LcY1x0pAAAAAJP9oTr0OHHCjlVu1ZIggttWZsYa "
+          onChange={setCaptcha}
+        />
         <button
           onClick={() => {
-            const res = signIn("google");
+            if (captcha) {
+              const res = signIn("google");
+            } else {
+              alert("Ingresa el captcha");
+            }
           }}
           className="absolute w-[698px] h-[95px] top-[1050px] left-[371px] bg-[#EFEFEF] rounded-full border-none cursor-pointer"
         >
