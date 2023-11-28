@@ -14,6 +14,7 @@ async function Menu() {
         <div className="w-[1440px] h-[1640px] flex flex-wrap justify-around bg-white relative">
         
           <BtnOpciones/>
+          
           <div className="absolute top-[62px] left-[672px] font-nunito font-normal text-black text-[60px] text-center leading-normal tracking-normal">
             Menú
           </div>
