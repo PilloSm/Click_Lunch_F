@@ -4,7 +4,11 @@ import { useState } from "react";
 import axios from "axios";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-
+import {
+  esContrasenaValida,
+  esCorreoElectronico,
+  soloLetras,
+} from "@/libs/val";
 export default function Registrar() {
   const router = useRouter();
   const [datos, setDatos] = useState({
@@ -23,6 +27,33 @@ export default function Registrar() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!datos.nombre || !datos.email || !datos.password || !datos.password2) {
+      setError("Todos los campos son obligatorios.");
+      return;
+    }
+
+    // Validar el formato del correo
+    if (!esCorreoElectronico(datos.email)) {
+      setError("Ingresa un correo electrónico válido.");
+      return;
+    }
+
+    // Validar la contraseña
+    if (!esContrasenaValida(datos.password)) {
+      setError("La contraseña debe tener al menos 6 caracteres.");
+      return;
+    }
+
+    if (!soloLetras(datos.nombre)) {
+      setError("Nombre invalido");
+      returnS;
+    }
+
+    // Validar que las contraseñas coincidan
+    if (datos.password !== datos.password2) {
+      setError("Las contraseñas no coinciden.");
+      return;
+    }
     console.log(datos.password, datos.password2);
     if (datos.password === datos.password2) {
       console.log(datos);
@@ -42,7 +73,8 @@ export default function Registrar() {
           redirect: false,
         });
         if (res.error) console.log(res.error);
-        if (res.status===200) router.push("http://localhost:3000/client/informacion");
+        if (res.status === 200)
+          router.push("http://localhost:3000/client/informacion");
       }
     } else {
       alert("Contraseñas no hacen match <3");

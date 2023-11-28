@@ -78,6 +78,7 @@ const handler = nextAuth({
   },
   pages: {
     signIn: "/",
+    error: "/",
   },
 });
 export { handler as GET, handler as POST };
