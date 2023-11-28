@@ -25,17 +25,6 @@ const BtnOpcionesAdmin = () => {
                 ✖️
               </button>
               <nav className="space-y-4">
-                <Link
-                  href="/menu"
-                  className="text-gray-300 hover:bg-gray-800 hover:border-l-4 hover:border-gray-300 hover:text-white block p-2 transition duration-200"
-                >
-                  <img
-                    className="pl-[4px]"
-                    src="/img/sidebar/casa-2.png"
-                    alt=""
-                  />
-                  Menú
-                </Link>
 
                 <Link
                   href="/admin/pedidos"
@@ -85,11 +74,16 @@ const BtnOpcionesAdmin = () => {
                   Ingredientes
                 </Link>
                 <button
-                className="text-gray-300 hover:bg-gray-800 hover:border-l-4 hover:border-gray-300 hover:text-white block p-2 transition duration-200"
+                  className="text-gray-300 hover:bg-gray-800 hover:border-l-4 hover:border-gray-300 hover:text-white block p-2 transition duration-200"
                   onClick={() => {
                     signOut();
                   }}
                 >
+                  <img
+                    className="pl-[4px]"
+                    src="/img/sidebar/logout.png"
+                    alt=""
+                  />
                   Cerrar sesion
                 </button>
               </nav>

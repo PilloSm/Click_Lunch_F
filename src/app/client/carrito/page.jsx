@@ -13,7 +13,7 @@ function Carrito() {
       <div className="bg-white w-full md:w-[768px] lg:w-[1024px] xl:w-[1440px] h-auto relative">
         {/* <BtnOpciones /> */}
 
-        <div className="absolute w-full md:w-[431px] top-[50px] left-[686px] transform -translate-x-1/2 font-nunito font-normal text-black text-[32px] md:text-[64px] text-center leading-normal tracking-normal">
+        <div className="absolute w-full md:w-[100px] top-[50px] left-[646px] transform -translate-x-1/2 font-nunito font-normal text-black text-[32px] md:text-[64px] text-center leading-normal tracking-normal">
           Carrito
         </div>
         {session.user.carrito.total > 0 ? (
@@ -74,10 +74,13 @@ function Carrito() {
           </div>
         )}
 
-        <div className="absolute top-[655px] left-[370px] font-nunito font-normal text-black text-[30px] text-center leading-normal tracking-normal whitespace-nowrap">
-          {session.user.carrito.total}
+        
+        <div className="absolute w-[520px] h-[90px] top-[645px] left-[430px] bg-[#DDDDDD] border-1 border-ddd  rounded-[20px]">
+        <div className="absolute text-3xl text-3f3131 top-[30px] left-[20px]">Total</div>
+        <div className="absolute text-3xl text-3f3131 top-[30px] right-[50px]">${session.user.carrito.total}</div>
         </div>
-        <div className="babsolute w-[893px] h-[88px] top-[743px] left-[562px]">
+
+        <div className="babsolute w-[893px] h-[88px] top-[743px] left-[567px]">
           <BtonPedir
             onClick={() => {
               const handleE = () => {

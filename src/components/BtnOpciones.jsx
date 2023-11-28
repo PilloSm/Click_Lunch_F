@@ -59,7 +59,7 @@ const BtnOpciones = () => {
                   />
                   Perfil
                 </Link>
-                <Link href={"/client/pedidos/" + session.user.id_cuenta}>
+                <Link href={"/client/pedidos/" + session.user.id_cuenta} className="text-gray-300 hover:bg-gray-800 hover:border-l-4 hover:border-gray-300 hover:text-white block p-2 transition duration-200">
                   <img
                     className="pl-[4px]"
                     src="/img/sidebar/reloj.png"
