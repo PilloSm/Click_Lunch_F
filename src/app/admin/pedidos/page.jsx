@@ -20,7 +20,9 @@ async function Pedidos() {
   return (
     <div className="bg-white flex flex-row justify-center w-full">
       <div className="w-[1440px] h-[1640px] flex flex-wrap justify-around bg-white relative">
-        <h1>Pedidos</h1>
+      <div className="absolute top-[62px] left-[582px] font-nunito font-normal text-black text-[60px] text-center leading-normal tracking-normal">
+            Pedidos
+          </div>
         <div className="absolute w-[431px] top-[202px] left-[572px] font-nunito font-normal text-black text-[60px] text-center leading-normal tracking-normal"></div>
         <div className="top-[20px] relative w-[6000px] h-[480px] flex flex-nowrap overflow-scroll justify-start overflow-x-scroll overflow-y-hidden">
           {res1.data.map((detalle) => (
