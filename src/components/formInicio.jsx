@@ -1,4 +1,5 @@
 "use client";
+import { User, Lock, Mail } from "lucide-react";
 import { signIn, useSession } from "next-auth/react";
 import { useState } from "react";
 import logo from "../../public/img/index/logo.png";
