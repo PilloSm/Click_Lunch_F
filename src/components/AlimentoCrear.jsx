@@ -31,24 +31,34 @@ function AlimentoForm() {
     });
   };
 
-  const handleIngredientChange = (id_ingrediente, cantidad) => {
+  const handleIngredientChange = (index, elemento, cambiar) => {
     const ingredienteExistente = ingredientesSeleccionados.find(
-      (ingrediente) => ingrediente.id_ingrediente === id_ingrediente
+      (ingrediente) => ingrediente.index === index
     );
 
     if (ingredienteExistente) {
       const nuevosIngredientes = ingredientesSeleccionados.map((ingrediente) =>
-        ingrediente.id_ingrediente === id_ingrediente
-          ? { ...ingrediente, cantidad }
+        ingrediente.index === index
+          ? { ...ingrediente, [cambiar]: elemento }
           : ingrediente
       );
 
       setIngredientesSeleccionados(nuevosIngredientes);
+      console.log(ingredientesSeleccionados);
     } else {
-      setIngredientesSeleccionados([
-        ...ingredientesSeleccionados,
-        { id_ingrediente, cantidad },
-      ]);
+      if (cambiar === "id_ingrediente") {
+        setIngredientesSeleccionados([
+          ...ingredientesSeleccionados,
+          { index, id_ingrediente: elemento, cantidad: 1 },
+        ]);
+      } else if (cambiar === "cantidad") {
+        setIngredientesSeleccionados([
+          ...ingredientesSeleccionados,
+          { index, id_ingrediente: "", cantidad: elemento },
+        ]);
+      }
+
+      console.log(ingredientesSeleccionados);
     }
   };
 
@@ -65,25 +75,25 @@ function AlimentoForm() {
       });
       setDatos({
         ingrediente: ingredientes,
-        tipo: tipos,
       });
     });
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(ingredientesSeleccionados);
     const formData = new FormData();
-
     formData.append("nombre", comidaN.nombre);
     formData.append("descripcion", comidaN.descripcion);
     formData.append("precio", comidaN.precio);
     if (file) {
       formData.append("imagen", file);
     }
+    formData.append("ingredientes", JSON.stringify(ingredientesSeleccionados))
     formData.append("tipos", datos.tipo);
 
     try {
-      const res = await axios.post(
+      const resultado = await axios.post(
         "http://localhost:3000/api/apiCafeteria/Comida",
         formData,
         {
@@ -92,20 +102,12 @@ function AlimentoForm() {
           },
         }
       );
-      console.log(ingredientesSeleccionados);
-      ingredientesSeleccionados.map(async (item) => {
-        await axios.put("http://localhost:3000/api/apiCafeteria/Comida", {
-          id_ingrediente: item.id_ingredientes,
-          id_comida:res.data.id,
-          cantidad: item.cantidad
-        });
-      });
-      console.log("Respuesta del servidor:", res.data);
-
+      console.log(resultado)
       form.current.reset();
       router.refresh();
-      router.push("/admin/pedidos");
+      // router.push("/admin/pedidos");
     } catch (error) {
+      console.log(error);
       console.error("Error al enviar la comida:", error);
     }
   };
@@ -184,8 +186,8 @@ function AlimentoForm() {
                   onChange={(e) =>
                     handleIngredientChange(
                       index,
-                      "id_ingrediente",
-                      e.target.value
+                      e.target.value,
+                      "id_ingrediente"
                     )
                   }
                 >
@@ -207,7 +209,7 @@ function AlimentoForm() {
                   name={`cantidad-${index}`} // Nombre único para cada input
                   min={1}
                   onChange={(e) =>
-                    handleIngredientChange(index, "cantidad", e.target.value)
+                    handleIngredientChange(index, e.target.value, "cantidad")
                   }
                   placeholder="Cantidad"
                 />

@@ -2,6 +2,7 @@ import { conn } from "@/libs/db";
 import { NextResponse } from "next/server";
 import { processImage } from "@/libs/processImage";
 import cloudinary from "@/libs/cloudinary";
+import Ingredientes from "@/app/admin/ingredientes/page";
 export async function POST(request) {
   try {
     const data = await request.formData();
@@ -36,7 +37,6 @@ export async function POST(request) {
         )
         .end(buffer);
     });
-    console.log();
 
     const result = await conn.query("INSERT INTO cat_comidas SET ?", {
       nombre: data.get("nombre"),
@@ -46,16 +46,25 @@ export async function POST(request) {
       imagen: res.secure_url,
     });
 
+    const datos = data.get("ingredientes");
+    const ingredientes = JSON.parse(datos)
+    ingredientes.map(async (item) => {
+      await conn.query("INSERT into det_ingrediente set ?", {
+        id_ingrediente: item.id_ingrediente,
+        id_comida: result[0].insertId,
+        cantidad: item.cantidad,
+      });
+    });
+
     const results = {
       name: data.get("nombre"),
       description: data.get("descripcion"),
       price: data.get("precio"),
       id: result[0].insertId,
     };
-    console.log(results);
     return NextResponse.json(results);
   } catch (error) {
-    console.log(error);
+    console.log(error)
     return NextResponse.json(
       {
         message: error.message,
@@ -65,9 +74,4 @@ export async function POST(request) {
       }
     );
   }
-}
-
-export async function PUT(request) {
-  const data = await request.json;
-  const res = await conn.query("INSERT into det_ingredientes set ?", data);
 }
