@@ -3,9 +3,12 @@ import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { esNumero } from "@/libs/val";
 
 export default function FormComida({ comidas }) {
   const router = useRouter();
+  const [error, setError] = useState("");
+
   const [comida, setComida] = useState({
     cantidad: 1,
     id_comida: comidas,
@@ -48,8 +51,34 @@ export default function FormComida({ comidas }) {
       [e.target.name]: e.target.value,
     });
   };
+
+  const handleSubmit = () => {
+    if (!esNumero(comida.cantidad)) {
+      setError("Como asi");
+      return;
+    }
+    if (session) {
+      const precioT =
+        session.user.carrito.total + platillo.precio * comida.cantidad;
+      const nuvo = {
+        nombre: platillo.nombre,
+        subtotal: platillo.precio * comida.cantidad,
+        cantidadM: platillo.cantidad_preparable,
+      };
+      const elemento = { ...comida, ...nuvo };
+      const cart = [...session.user.carrito.comidas, elemento];
+      const carritoF = {
+        total: precioT,
+        comidas: cart,
+      };
+      update({ carrito: carritoF });
+      router.push("/client/carrito");
+    }
+  };
+
   return (
     <>
+      {error && <div className="flex bg-red-400 align-baseline">{error}</div>}
       <div className="absolute w-[325px] top-[64px] left-[298px] font-nunito font-semibold text-black text-[64px] rounded-[40px] leading-normal tracking-normal whitespace-nowrap">
         {platillo.nombre}
       </div>
@@ -91,25 +120,7 @@ export default function FormComida({ comidas }) {
       <img src={platillo.imagen} alt={platillo.nombre}></img>
 
       <button
-        onClick={() => {
-          if (session) {
-            const precioT =
-              session.user.carrito.total + platillo.precio * comida.cantidad;
-            const nuvo = {
-              nombre: platillo.nombre,
-              subtotal: platillo.precio * comida.cantidad,
-              cantidadM: platillo.cantidad_preparable,
-            };
-            const elemento = { ...comida, ...nuvo };
-            const cart = [...session.user.carrito.comidas, elemento];
-            const carritoF = {
-              total: precioT,
-              comidas: cart,
-            };
-            update({ carrito: carritoF });
-            router.push("/client/carrito");
-          }
-        } }
+        onClick={handleSubmit}
         className="absolute w-[698px] h-[95px] top-[850px] left-[371px] bg-[#25a18ee6] rounded-full border-none cursor-pointer"
       >
         <div className="absolute w-[523px] h-[20px] top-[37px] left-[87px] font-poppins-bold text-[white] text-[32px] text-center leading-[20px]">
