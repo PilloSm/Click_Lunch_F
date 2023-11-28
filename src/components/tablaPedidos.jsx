@@ -27,39 +27,43 @@ export default async function TablaPedidos({ id_cuenta }) {
   });
 
   return (
-    <table>
-      <tr>
-        <th>ID Pedido</th>
-        <th>Total</th>
-        <th>Estado</th>
-        <th>Fecha</th>
-        <th>Cantidades Detalles</th>
-        <th>Precios Detalles</th>
-        <th>Nombres Comidas</th>
+    <table className="absolute min-w-full bg-white border border-gray-300 top-[180px]">
+  <thead className="bg-[#25a18ee6]">
+    <tr>
+      <th className="py-2 px-4 border-b">ID Pedido</th>
+      <th className="py-2 px-4 border-b">Total</th>
+      <th className="py-2 px-4 border-b">Estado</th>
+      <th className="py-2 px-4 border-b">Fecha</th>
+      <th className="py-2 px-4 border-b">Cantidades Detalles</th>
+      <th className="py-2 px-4 border-b">Precios Detalles</th>
+      <th className="py-2 px-4 border-b">Nombres Comidas</th>
+    </tr>
+  </thead>
+  <tbody>
+    {res.data.map((pedido) => (
+      <tr key={pedido.id_pedido}>
+        <td className="py-2 px-4 border-b">{pedido.id_pedido}</td>
+        <td className="py-2 px-4 border-b">{pedido.total}</td>
+        <td className="py-2 px-4 border-b">{pedido.estado_nombre}</td>
+        <td className="py-2 px-4 border-b">{pedido.fecha}</td>
+        <td className="py-2 px-4 border-b">
+          {pedido.cantidades_detalles.split(",").map((detalle, index) => (
+            <div key={index} className="mb-1">{detalle}</div>
+          ))}
+        </td>
+        <td className="py-2 px-4 border-b">
+          {pedido.precios_detalles.split(",").map((detalle, index) => (
+            <div key={index} className="mb-1">{detalle}</div>
+          ))}
+        </td>
+        <td className="py-2 px-4 border-b">
+          {pedido.nombres_comidas.split(",").map((detalle, index) => (
+            <div key={index} className="mb-1">{detalle}</div>
+          ))}
+        </td>
       </tr>
-      {res.data.map((pedido) => (
-        <tr key={pedido.id_pedido}>
-          <td>{pedido.id_pedido}</td>
-          <td>{pedido.total}</td>
-          <td>{pedido.estado_nombre}</td>
-          <td>{pedido.fecha}</td>
-          <td>
-            {pedido.cantidades_detalles.split(",").map((detalle, index) => (
-              <div key={index}>{detalle}</div>
-            ))}
-          </td>
-          <td>
-            {pedido.precios_detalles.split(",").map((detalle, index) => (
-              <div key={index}>{detalle}</div>
-            ))}
-          </td>
-          <td>
-            {pedido.nombres_comidas.split(",").map((detalle, index) => (
-              <div key={index}>{detalle}</div>
-            ))}
-          </td>
-        </tr>
-      ))}
-    </table>
+    ))}
+  </tbody>
+</table>
   );
 }

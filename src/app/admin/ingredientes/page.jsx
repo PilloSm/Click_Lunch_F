@@ -54,7 +54,14 @@ export default function Ingredientes() {
 
   return (
     <div className="bg-white flex flex-row justify-center w-full">
-    <div className="w-[1440px] h-[1400px] flex flex-wrap justify-around bg-white relative">
+    <div className="w-[1440px] h-[1000px] flex flex-wrap justify-around bg-white relative">
+
+    <div class="absolute top-[400px] left-[1700px] w-80 h-80 rounded-full bg-[#3AAA9C] z-10">
+    </div>
+
+    <div className="absolute top-[62px] left-[472px] font-nunito font-normal text-black text-[60px] text-center leading-normal tracking-normal">
+            Crear Ingrediente
+          </div>
 
     <form onSubmit={handleSubmit}>
       <div className="absolute w-[219px] top-[211px] left-[523px] font-poppins font-normal text-[#09090999] text-[16px] leading-[24px] tracking-[0.15px]">
@@ -78,10 +85,12 @@ export default function Ingredientes() {
           onChange={handleCahnge}
         />
       </div>
+
+
       <div className="absolute w-[450px] h-[48px] top-[373px] left-[495px] bg-white border border-[#797979]">
         <select
           name="unidad"
-          className="absolute w-[438px] h-[35px] top-[4px] left-[5px] font-nunito font-normal bg-[white] text-black text-[24px] leading-normal tracking-normal border-none outline-none"
+          className="absolute w-[438px] h-[35px] top-[260px] left-[0px] font-nunito font-normal bg-[white] text-black text-[24px] leading-normal tracking-normal border-none outline-none"
           onChange={handleCahnge}
         >
           <option value="">Seleccionar Unidad</option>
@@ -93,10 +102,12 @@ export default function Ingredientes() {
         </select>
       </div>
       <div>
+
+
         <input
         className="absolute w-[438px] h-[35px] top-[380px] left-[500px] font-nunito font-normal text-black bg-[white] text-[24px] leading-normal tracking-normal border-none outline-none"
           name="cantidad"
-          placeholder="cantidad"
+          placeholder="Cantidad"
           type="number"
           onChange={handleCahnge}
         />
@@ -105,7 +116,7 @@ export default function Ingredientes() {
         <input
         className="absolute w-[438px] h-[35px] top-[5px] left-[5px] font-nunito font-normal text-black bg-[white] text-[24px] leading-normal tracking-normal border-none outline-none"
           name="precio"
-          placeholder="precio"
+          placeholder="Precio"
           type="number"
           onChange={handleCahnge}
         />

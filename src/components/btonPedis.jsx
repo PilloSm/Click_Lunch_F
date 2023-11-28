@@ -17,9 +17,9 @@ export default function BtonPedir({ carrito, id_cuenta, saldo }) {
     <Link href={"/client/informacion?borrar=si"}>
       <button
         onClick={handleSubmit}
-        className="absolute w-[698px] h-[95px] top-[759px] left-[371px] bg-[#25a18ee6] rounded-full border-none cursor-pointer"
+        className="absolute w-[528px] h-[95px] top-[759px] left-[426px] bg-[#25a18ee6] rounded-full border-none cursor-pointer"
       >
-        <div className="absolute w-[523px] h-[20px] top-[37px] left-[87px] font-poppins-bold text-[white] text-[32px] text-center leading-[20px]">
+        <div className="absolute w-[523px] h-[20px] top-[37px] left-[0px] font-poppins-bold text-[white] text-[32px] text-center leading-[20px]">
           Pedir
         </div>
       </button>

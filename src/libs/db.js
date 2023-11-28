@@ -8,6 +8,14 @@ export const conn = createPool({
     database:'clickluch'
 })
 
+// export const conn = createPool({
+//     host:'localhost',
+//     user:'root',
+//     password:'LuMITY_BV1',
+//     port:3306,
+//     database:'clickluch'
+// })
+
 // database: clicklunch
 // username: 2l3m81j21fxzbehsiz9t
 // host: aws.connect.psdb.cloud
