@@ -13,6 +13,7 @@
     "bcryptjs": "^2.4.3",
     "cloudinary": "^1.41.0",
     "jose": "^5.1.1",
+    "lucide-react": "^0.293.0",
     "mysql2": "^3.6.3",
     "next": "14.0.2",
     "next-auth": "^4.24.5",

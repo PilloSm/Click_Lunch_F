@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import axios from "axios";
 import { signIn } from "next-auth/react";
+import { User, Lock, Mail } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 export default function Registrar() {
@@ -42,7 +43,8 @@ export default function Registrar() {
           redirect: false,
         });
         if (res.error) console.log(res.error);
-        if (res.status===200) router.push("http://localhost:3000/client/informacion");
+        if (res.status === 200)
+          router.push("http://localhost:3000/client/informacion");
       }
     } else {
       alert("Contraseñas no hacen match <3");
@@ -51,19 +53,20 @@ export default function Registrar() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="bg-white flex flex-row justify-center w-full">
-        <div className="bg-white w-[1440px] h-[1024px] relative">
-          <div className="absolute w-[331px] top-[38px] left-[553px] font-abel font-normal text-black text-[78px] text-center leading-normal;">
-            Registrar
+      <div className="w-full bg-cl-1 bg-repeat h-screen flex justify-center items-center ">
+        <div className="p-5 bg-white m-10 border-2 border-[#25a18ee6] rounded-md lg:w-3/12 flex flex-col items-center">
+          <div className="text-2xl text-[#25a18ee6] font-semibold ">
+            Registro
           </div>
-          <div className="absolute w-[698px] h-[113px] top-[190px] left-[370px] bg-[#f2f3f2]">
-            <img
-              className="absolute w-[47px] h-[51px] top-[26px] left-[42px]"
-              src="/img/reg/user-user.png"
-              alt="User Icon"
-            />
+          <img
+            className="w-64"
+            src="https://i.ibb.co/g9czN3L/logo.png"
+            alt="Logo"
+          />
+          <div className="flex flex-row justify-center p-2  border-2 rounded-md border-[#25a18ee6] items-center">
+            <User size={32} />
             <input
-              className="w-[500px] h-[50px] top-[30%] absolute left-[116px] text-[25px] bg-[#f2f3f2] border-none outline-none"
+              className=" ml-2 border-none outline-none"
               type="text"
               name="nombre"
               placeholder="Usuario"
@@ -71,58 +74,68 @@ export default function Registrar() {
             />
           </div>
 
-          <div className="absolute w-[698px] h-[113px] top-[335px] left-[370px] bg-[#F2F3F2] bg-cover">
-            <img
-              className="absolute w-[48px] h-[38px] top-[40px] left-[41px]"
-              src="/img/reg/vector.png"
-              alt="Email Icon"
-            />
+          <div className="flex flex-row justify-center p-2 mt-5 border-2 rounded-md border-[#25a18ee6] items-center ">
+            <Mail size={32} />
             <input
-              className="w-[500px] h-[50px] top-[30%] absolute left-[116px] text-[25px] bg-[#f2f3f2] border-none outline-none"
+              className=" ml-2 border-none outline-none"
               type="email"
               name="email"
               placeholder="Correo"
               onChange={handleChange}
             />
           </div>
-          <div className="absolute w-[698px] h-[113px] top-[480px] left-[371px] bg-[#F2F3F2] bg-cover">
-            <img
-              className="absolute w-[62px] h-[61px] top-[23px] left-[35px]"
-              src="/img/reg/password-1-1.png"
-              alt="Password Icon"
-            />
+          <div className="flex flex-row justify-center p-2 mt-5 border-2 rounded-md border-[#25a18ee6] items-center">
+            <Lock size={32} />
             <input
-              className="w-[500px] h-[50px] top-[30%] absolute left-[116px] text-[25px] bg-[#f2f3f2] border-none outline-none"
+              className="ml-2  border-none outline-none"
               type="password"
               name="password"
               placeholder="Contraseña"
               onChange={handleChange}
             />
           </div>
-          <div className="absolute w-[698px] h-[113px] top-[625px] left-[371px] bg-[#f2f3f2] bg-cover">
-            <img
-              className="absolute w-[62px] h-[61px] top-[23px] left-[35px]"
-              src={"/img/reg/password-1.png"}
-              alt="Confirm Password Icon"
-            />
+          <div className="flex flex-row justify-center mt-5 p-2 border-2 rounded-md border-[#25a18ee6] items-center">
+            <Lock size={32} />
             <input
-              className="w-[500px] h-[50px] top-[30%] absolute left-[116px] text-[25px] bg-[#f2f3f2] border-none outline-none"
+              className=" ml-2 border-none outline-none"
               type="password"
               name="password2"
               placeholder="Confirmar contraseña"
               onChange={handleChange}
             />
           </div>
-          <button className="absolute w-[697px] h-[95px] top-[785px] left-[371px] bg-[#25a18ee6] rounded-full border-none cursor-pointer">
-            <div className="absolute w-[523px] h-[20px] top-[37px] left-[87px] font-poppins-bold text-[white] text-[32px] text-center leading-[20px]">
+          <button className=" bg-[#25a18ee6] w-8/12 hover:bg-[#5cc0b1e6] duration-100 scale-105 rounded-xl py-2 px-3 mt-5 border-none cursor-pointer">
+            <div className="font-poppins-bold text-[white] ] text-center ">
               Registrarse
             </div>
           </button>
-          <Link href="/inicio">
-            <p className="absolute w-404 top-[903px] left-[540px] font-normal text-blue-500 text-2xl text-center underline">
+          <Link href="/">
+            <p className=" font-normal text-blue-500 text-lg mt-5 text-center underline">
               ¿Ya tienes cuenta? Inicia sesión
             </p>
           </Link>
+          <div className=" border-t border-gray-500 "></div>
+          <p className="text-xl text-center">ó</p>
+          <div className=" border-t border-gray-500 "></div>
+          <button
+            onClick={() => {
+              if (captcha) {
+                const res = signIn("google");
+              } else {
+                alert("Ingresa el captcha");
+              }
+            }}
+            className=" bg-[#EFEFEF] rounded-full border-none my-4 cursor-pointer"
+          >
+            <div className="font-poppins-bold flex flex-row justify-center items-center p-2 text-black  text-center ">
+              <img
+                className="w-8"
+                src="https://i.ibb.co/xJRLWfJ/gugulnobg-removebg-preview.png"
+                alt=""
+              />
+              Iniciar sesión con Google
+            </div>
+          </button>
         </div>
       </div>
     </form>
