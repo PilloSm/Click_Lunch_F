@@ -1,17 +1,11 @@
 "use client";
 import { signIn, useSession } from "next-auth/react";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import logo from "../../public/img/index/logo.png";
 import Link from "next/link";
 import ReCAPTCHA from "react-google-recaptcha";
 import { User, Lock, Mail } from "lucide-react";
 export default function FormInicio() {
-  const { data: session } = useSession();
-  const router = useRouter();
-  if (session) {
-    router.push("/menu");
-  }
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -30,15 +24,9 @@ export default function FormInicio() {
       try {
         const res = await signIn("credentials", {
           ...credentials,
-          redirect: false,
+          callbackUrl: "http://localhost:3000/menu ",
         });
-        console.log(res);
         if (res?.error) setError(res.error);
-        console.log(session);
-        if (session) {
-          console.log(session);
-        }
-        if (res.status === 200) router.push("/menu");
       } catch (error) {
         setError(error);
       }
@@ -104,7 +92,9 @@ export default function FormInicio() {
         <button
           onClick={() => {
             if (captcha) {
-              const res = signIn("google");
+              signIn("google", {
+                callbackUrl: "http://localhost:3000/menu ",
+              });
             } else {
               alert("Ingresa el captcha");
             }
