@@ -36,22 +36,24 @@ export async function POST(request) {
         )
         .end(buffer);
     });
+    console.log();
 
     const result = await conn.query("INSERT INTO cat_comidas SET ?", {
-      nombre: data.get("name"),
-      tipo: data.get("tipo"),
-      descripcion: data.get("description"),
-      precio: data.get("price"),
-      image: res.secure_url,
+      nombre: data.get("nombre"),
+      tipo: data.get("tipos"),
+      descripcion: data.get("descripcion"),
+      precio: data.get("precio"),
+      imagen: res.secure_url,
     });
-    const sql = 'INSERT INTO det_ingredientes (id_ingrediente, cantidad) VALUES ?';
-    const query= conn.query(sql,[data.map(item=>[item.id_ingrediente, item.cantidad])])
-    return NextResponse.json({
-      name: data.get("name"),
-      description: data.get("description"),
-      price: data.get("price"),
-      id: result.insertId,
-    });
+
+    const results = {
+      name: data.get("nombre"),
+      description: data.get("descripcion"),
+      price: data.get("precio"),
+      id: result[0].insertId,
+    };
+    console.log(results);
+    return NextResponse.json(results);
   } catch (error) {
     console.log(error);
     return NextResponse.json(
@@ -63,4 +65,9 @@ export async function POST(request) {
       }
     );
   }
+}
+
+export async function PUT(request) {
+  const data = await request.json;
+  const res = await conn.query("INSERT into det_ingredientes set ?", data);
 }

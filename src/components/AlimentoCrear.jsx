@@ -5,10 +5,15 @@ import { useRouter, useParams } from "next/navigation";
 
 function AlimentoForm() {
   const [numeroIteraciones, setNumeroIteraciones] = useState(1);
+  const [ingredientesSeleccionados, setIngredientesSeleccionados] = useState(
+    []
+  );
+
   const [comidaN, setComidaN] = useState({
     nombre: "",
     descripcion: "",
     precio: 0,
+    tipo: [],
   });
   const [datos, setDatos] = useState({
     ingrediente: [],
@@ -56,6 +61,7 @@ function AlimentoForm() {
         nombre: nombre,
         descripcion: descripcion,
         precio: precio,
+        tipo: tipos,
       });
       setDatos({
         ingrediente: ingredientes,
@@ -71,18 +77,10 @@ function AlimentoForm() {
     formData.append("nombre", comidaN.nombre);
     formData.append("descripcion", comidaN.descripcion);
     formData.append("precio", comidaN.precio);
-
     if (file) {
       formData.append("imagen", file);
     }
-
-    comidaN.ingredientes.forEach((ingrediente, index) => {
-      formData.append(
-        `ingredientes[${index}][id_ingrediente]`,
-        ingrediente.id_ingrediente
-      );
-      formData.append(`ingredientes[${index}][cantidad]`, ingrediente.cantidad);
-    });
+    formData.append("tipos", datos.tipo);
 
     try {
       const res = await axios.post(
@@ -94,7 +92,14 @@ function AlimentoForm() {
           },
         }
       );
-
+      console.log(ingredientesSeleccionados);
+      ingredientesSeleccionados.map(async (item) => {
+        await axios.put("http://localhost:3000/api/apiCafeteria/Comida", {
+          id_ingrediente: item.id_ingredientes,
+          id_comida:res.data.id,
+          cantidad: item.cantidad
+        });
+      });
       console.log("Respuesta del servidor:", res.data);
 
       form.current.reset();
@@ -185,7 +190,7 @@ function AlimentoForm() {
                   }
                 >
                   <option value="">Seleccionar Ingrediente</option>
-                  {datos.ingredientes.map((ingrediente) => (
+                  {datos.ingrediente.map((ingrediente) => (
                     <option
                       key={ingrediente.id_ingrediente}
                       value={ingrediente.id_ingrediente}
@@ -220,7 +225,7 @@ function AlimentoForm() {
           }}
         >
           <option value="">Seleccinart tipo</option>
-          {comidaN.tipos.map((item, i) => (
+          {comidaN.tipo.map((item) => (
             <option key={item.id_tipos} value={item.id_tipos}>
               {item.nombre}
             </option>
