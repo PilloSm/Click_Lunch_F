@@ -9,11 +9,11 @@ function Carrito() {
   const carrito = session.user.carrito;
 
   return (
-    <div className="bg-white flex flex-row justify-center w-full;">
-      <div className="bg-white w-[1440px] h-[1024px] relative">
-        <BtnOpciones />
+    <div className="bg-white flex flex-row justify-center w-full">
+      <div className="bg-white w-full md:w-[768px] lg:w-[1024px] xl:w-[1440px] h-auto relative">
+        {/* <BtnOpciones /> */}
 
-        <div className="absolute w-[431px] top-[50px] left-[504px] font-nunito font-normal text-black text-[64px] text-center leading-normal tracking-normal">
+        <div className="absolute w-full md:w-[431px] top-[50px] left-[686px] transform -translate-x-1/2 font-nunito font-normal text-black text-[32px] md:text-[64px] text-center leading-normal tracking-normal">
           Carrito
         </div>
         {session.user.carrito.total > 0 ? (
@@ -67,7 +67,7 @@ function Carrito() {
             </tbody>
           </table>
         ) : (
-          <div className="absolute max-w-500 top-[195px] left-[430px] bg-[#DDDDDD] border-1 border-ddd p-20">
+          <div className="absolute max-w-500 top-[195px] left-[430px] bg-[#DDDDDD] border-1 border-ddd p-20 rounded-[20px]">
             <h1 className="text-3xl text-3f3131">
               ¡No hay nada en el carrito!
             </h1>{" "}

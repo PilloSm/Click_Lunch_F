@@ -12,12 +12,13 @@ async function Menu() {
     <form>
       <div className="bg-white flex flex-row justify-center w-full">
         <div className="w-[1440px] h-[1640px] flex flex-wrap justify-around bg-white relative">
-    <BtnOpciones/>
-          <div className="absolute top-[162px] left-[672px] font-nunito font-normal text-black text-[60px] text-center leading-normal tracking-normal">
-            Menu
+        
+          <BtnOpciones/>
+          <div className="absolute top-[62px] left-[672px] font-nunito font-normal text-black text-[60px] text-center leading-normal tracking-normal">
+            Menú
           </div>
 
-          <div className="top-[220px] left-[70px] relative w-full h-[1200px] flex flex-wrap overflow-scroll overflow-x-hidden overflow-y-scroll justify-start">
+          <div className="top-[0px] left-[70px] relative w-full h-[1200px] flex flex-wrap overflow-scroll overflow-x-hidden overflow-y-scroll justify-start">
             {comidas.map((item)=>(<CardCocina comidas={item} />
 ))}
           </div>
