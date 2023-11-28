@@ -11,7 +11,7 @@ const BarraSuperior = () => {
     <div>
       <BtnOpciones />
 
-      <div className="absolute w-[1040px] divide-x-0 h-[64px] top-[71px] left-[209px]">
+      <div className="absolute w-[1040px]  h-[64px] top-[71px] left-[209px]">
         <div className="relative h-[64px]">
           <div className="w-[1040px] h-[61px] top-0 bg-[#e6e7e9] rounded-[11px] absolute left-0"></div>
 
