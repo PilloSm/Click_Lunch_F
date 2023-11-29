@@ -90,7 +90,7 @@ export default function Registrar() {
           <div className="text-2xl text-[#25a18ee6] font-semibold ">
             Registro
           </div>
-          <Img
+          <img
             className="w-64"
             src="https://i.ibb.co/g9czN3L/logo.png"
             alt="Logo"
@@ -162,7 +162,7 @@ export default function Registrar() {
             className=" bg-[#EFEFEF] rounded-full border-none my-4 cursor-pointer"
           >
             <div className="font-poppins-bold flex flex-row justify-center items-center p-2 text-black  text-center ">
-              <Img
+              <img
                 className="w-8"
                 src="https://i.ibb.co/xJRLWfJ/gugulnobg-removebg-preview.png"
                 alt=""
