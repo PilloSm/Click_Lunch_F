@@ -20,20 +20,20 @@ export default function FormInicio() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // if (!credentials.email || !credentials.password) {
-    //   setError("Todos los campos son obligatorios.");
-    //   return;
-    // }
+    if (!credentials.email || !credentials.password) {
+      setError("Todos los campos son obligatorios.");
+      return;
+    }
 
-    // if (!esCorreoElectronico(credentials.email)) {
-    //   setError("Ingresa un correo electrónico válido.");
-    //   return;
-    // }
+    if (!esCorreoElectronico(credentials.email)) {
+      setError("Ingresa un correo electrónico válido.");
+      return;
+    }
 
-    // if (!esContrasenaValida(credentials.password)) {
-    //   setError("La contraseña debe tener al menos 6 caracteres.");
-    //   return;
-    // }
+    if (!esContrasenaValida(credentials.password)) {
+      setError("La contraseña debe tener al menos 6 caracteres.");
+      return;
+    }
     if (captcha) {
       try {
         const res = await signIn("credentials", {
