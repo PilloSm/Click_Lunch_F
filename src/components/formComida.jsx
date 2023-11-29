@@ -79,25 +79,25 @@ export default function FormComida({ comidas }) {
   return (
     <>
       {error && <div className="flex bg-red-400 align-baseline">{error}</div>}
-      <div className="absolute w-[325px] top-[64px] left-[298px] font-nunito font-semibold text-black text-[64px] rounded-[40px] leading-normal tracking-normal whitespace-nowrap">
+      <div className="absolute w-[325px] top-[-8px] left-[298px] font-nunito font-semibold text-black text-[54px] rounded-[40px] leading-normal tracking-normal whitespace-nowrap">
         {platillo.nombre}
       </div>
-      <p className="absolute w-[595px] top-[201px] left-[115px] border border-black p-4 text-black rounded-[50px]">
+      <p className="absolute w-[595px] top-[101px] h-[250px] left-[115px] border border-black p-4 text-black rounded-[50px]">
     {platillo.descripcion}
       </p>
 
-      <p className="absolute w-[325px] top-[537px] left-[119px] font-nunito font-nunito font-bold text-black text-[64px] leading-normal tracking-normal">
+      <p className="absolute w-[325px] top-[387px] left-[119px] font-nunito font-nunito font-bold text-black text-[64px] leading-normal tracking-normal">
         $
       </p>
       <input
-        className="absolute w-[325px] top-[537px] left-[159px] font-nunito font-nunito font-bold text-black text-[64px] leading-normal tracking-normal bg-[white]"
+        className="absolute w-[325px] top-[387px] left-[159px] font-nunito font-nunito font-bold text-black text-[64px] leading-normal tracking-normal bg-[white]"
         disabled
         name="precio"
         value={platillo.precio}
         onChange={handleChange}
       />
 
-      <div className="absolute w-[274px] h-[84px] top-[652px] left-[583px] rounded-[10px]">
+      <div className="absolute w-[274px] h-[84px] top-[452px] left-[583px] rounded-[10px]">
         <input
           type="number"
           className="text-center text-[42px] absolute w-[274px] h-[84px] top-0 left-0 bg-white rounded-[10px] border-4 border-black"
@@ -110,13 +110,13 @@ export default function FormComida({ comidas }) {
         />
       </div>
 
-      <div className="absolute w-[589px] h-[373px] top-[139px] left-[790px] bg-white">
-      <img className="absolute w-[546px] h-[323px] top-[27px] left-[24px] object-cover;" src={platillo.imagen} alt={platillo.nombre} alt="Comida"></img>
+      <div className="absolute w-[589px] h-[373px] top-[59px] left-[790px] bg-white">
+      <img className="absolute w-[386px] h-[223px] top-[27px] left-[24px] object-cover;" src={platillo.imagen} alt={platillo.nombre} alt="Comida"></img>
       </div>
 
       <button
         onClick={handleSubmit}
-        className="absolute w-[698px] h-[95px] top-[850px] left-[371px] bg-[#25a18ee6] rounded-full border-none cursor-pointer"
+        className="absolute w-[698px] h-[95px] top-[650px] left-[371px] bg-[#25a18ee6] rounded-full border-none cursor-pointer"
       >
         <div className="absolute w-[523px] h-[20px] top-[37px] left-[87px] font-poppins-bold text-[white] text-[32px] text-center leading-[20px]">
           Agregar
