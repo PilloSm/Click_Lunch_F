@@ -4,7 +4,7 @@ import ValUsu from "@/components/validarUsu";
 export default function ({ params }) {
   return (
     <>
-      <ValUsu>
+      <ValUsu params={params.id}>
         <TablaPedidos id_cuenta={params.id} />;
       </ValUsu>
     </>

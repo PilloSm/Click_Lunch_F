@@ -53,7 +53,8 @@ export default function FormComida({ comidas }) {
   };
 
   const handleSubmit = () => {
-    if (!esNumero(comida.cantidad)) {
+    console.log(esNumero(comida.cantidad))
+    if (esNumero(comida.cantidad)) {
       setError("Como asi");
       return;
     }
