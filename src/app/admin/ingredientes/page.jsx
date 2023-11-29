@@ -56,28 +56,29 @@ export default function Ingredientes() {
     <div className="bg-white flex flex-row justify-center w-full">
     <div className="w-[1440px] h-[1000px] flex flex-wrap justify-around bg-white relative">
 
-    <div class="absolute top-[400px] left-[1700px] w-80 h-80 rounded-full bg-[#3AAA9C] z-10">
-    </div>
+    <div className="absolute w-[600px] h-[800px] top-[80px] left-[504px] shadow-lg rounded-[50px]">
+    {/* <div class="absolute top-[400px] left-[1700px] w-80 h-80 rounded-full bg-[#3AAA9C] z-10">
+    </div> */}
 
-    <div className="absolute top-[62px] left-[472px] font-nunito font-normal text-black text-[60px] text-center leading-normal tracking-normal">
+    <div className="absolute top-[24px] left-[120px] font-nunito font-normal text-black text-[40px] text-center leading-normal tracking-normal">
             Crear Ingrediente
           </div>
 
     <form onSubmit={handleSubmit}>
-      <div className="absolute w-[219px] top-[211px] left-[523px] font-poppins font-normal text-[#09090999] text-[16px] leading-[24px] tracking-[0.15px]">
+      <div className="absolute w-[219px] top-[121px] left-[63px] font-poppins font-normal text-[#09090999] text-[16px] leading-[24px] tracking-[0.15px]">
         Nombre
       </div>
-      <div className="absolute w-[219px] top-[341px] left-[523px] font-poppins font-normal text-[#09090999] text-[16px] leading-[24px] tracking-[0.15px]">
+      <div className="absolute w-[219px] top-[241px] left-[63px] font-poppins font-normal text-[#09090999] text-[16px] leading-[24px] tracking-[0.15px]">
         Cantidad
       </div>
-      <div className="absolute w-[219px] top-[471px] left-[523px] font-poppins font-normal text-[#09090999] text-[16px] leading-[24px] tracking-[0.15px]">
+      <div className="absolute w-[219px] top-[371px] left-[63px] font-poppins font-normal text-[#09090999] text-[16px] leading-[24px] tracking-[0.15px]">
         Precio
       </div>
-      <div className="absolute w-[219px] top-[591px] left-[523px] font-poppins font-normal text-[#09090999] text-[16px] leading-[24px] tracking-[0.15px]">
+      <div className="absolute w-[219px] top-[491px] left-[63px] font-poppins font-normal text-[#09090999] text-[16px] leading-[24px] tracking-[0.15px]">
         Unidad
       </div>
 
-      <div className="absolute w-[450px] h-[48px] top-[242px] left-[495px] bg-white border border-[#797979]">
+      <div className="absolute w-[450px] h-[48px] top-[152px] left-[85px] bg-white border border-[#797979]">
         <input
           name="nombre"
           placeholder="Nombre"
@@ -87,7 +88,7 @@ export default function Ingredientes() {
       </div>
 
 
-      <div className="absolute w-[450px] h-[48px] top-[373px] left-[495px] bg-white border border-[#797979]">
+      <div className="absolute w-[450px] h-[48px] top-[273px] left-[85px] bg-white border border-[#797979]">
         <select
           name="unidad"
           className="absolute w-[438px] h-[35px] top-[260px] left-[0px] font-nunito font-normal bg-[white] text-black text-[24px] leading-normal tracking-normal border-none outline-none"
@@ -101,18 +102,17 @@ export default function Ingredientes() {
           ))}
         </select>
       </div>
+
       <div>
-
-
         <input
-        className="absolute w-[438px] h-[35px] top-[380px] left-[500px] font-nunito font-normal text-black bg-[white] text-[24px] leading-normal tracking-normal border-none outline-none"
+        className="absolute w-[438px] h-[35px] top-[280px] left-[90px] font-nunito font-normal text-black bg-[white] text-[24px] leading-normal tracking-normal border-none outline-none"
           name="cantidad"
           placeholder="Cantidad"
           type="number"
           onChange={handleCahnge}
         />
       </div>
-      <div className="absolute w-[450px] h-[48px] top-[502px] left-[495px] bg-white border border-[#797979]">
+      <div className="absolute w-[450px] h-[48px] top-[402px] left-[85px] bg-white border border-[#797979]">
         <input
         className="absolute w-[438px] h-[35px] top-[5px] left-[5px] font-nunito font-normal text-black bg-[white] text-[24px] leading-normal tracking-normal border-none outline-none"
           name="precio"
@@ -121,12 +121,13 @@ export default function Ingredientes() {
           onChange={handleCahnge}
         />
       </div>
-      <button className="absolute w-[450px] h-[77px] top-[770px] left-[495px] bg-[#25a18ee6] rounded-full border-none cursor-pointer">
+      <button className="absolute w-[450px] h-[77px] top-[700px] left-[70px] bg-[#25a18ee6] rounded-full border-none cursor-pointer">
         <div className="absolute w-[338px] h-[20px] top-[28px] left-[56px] font-poppins font-bold text-white text-[24px] text-center leading-[20px]">
           Crear Ingrediente
         </div>
       </button>
     </form>
+    </div>
 
     </div>
     </div>

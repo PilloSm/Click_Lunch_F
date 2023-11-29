@@ -5,10 +5,7 @@ export default function Informacion(request) {
   const { searchParams } = request;
   
   return (
-    <div className="bg-white flex flex-row justify-center w-full h-[1000px]">
-
-    <div className="absolute top-[400px] left-[1700px] w-80 h-80 rounded-full bg-[#3AAA9C] z-10">
-    </div>
+    <div className="bg-white flex flex-row justify-center w-full h-[1000px]">    
       <InformacionCliente borrarCarrito={searchParams.borrar} />
     </div>
   );
