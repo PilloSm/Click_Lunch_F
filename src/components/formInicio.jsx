@@ -5,6 +5,7 @@ import { useState } from "react";
 import logo from "../../public/img/index/logo.png";
 import Link from "next/link";
 import ReCAPTCHA from "react-google-recaptcha";
+import { esContrasenaValida, esCorreoElectronico } from "@/libs/val";
 export default function FormInicio() {
   const [credentials, setCredentials] = useState({
     email: "",
