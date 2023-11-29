@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request, { params }) {
   try {
-    const res = await conn.query(` SELECT 
+    const res = await conn.query(`SELECT 
     m_pedidos.id_pedido,
     m_pedidos.id_cuenta,
     m_pedidos.total,
@@ -19,7 +19,7 @@ FROM m_pedidos
 JOIN cat_estados ON m_pedidos.estado = cat_estados.id_estado
 JOIN det_pedido ON m_pedidos.id_pedido = det_pedido.id_pedido
 JOIN cat_comidas ON det_pedido.id_comida = cat_comidas.id_comidas
-WHERE m_pedidos.estado <> 6 AND m_pedidos.estado = ${params.id}
+WHERE m_pedidos.estado <> 6 AND m_pedidos.estado = ${params.id} AND DATE(m_pedidos.fecha) = CURDATE()
 GROUP BY m_pedidos.id_pedido;
 `);
     return NextResponse.json(res[0]);
