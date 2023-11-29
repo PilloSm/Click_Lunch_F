@@ -62,7 +62,7 @@ function Carrito() {
                         handleE(item.id_comida);
                       }}
                     >
-                      Eliminar
+                      <img src="/img/carrito/borrar-1.png"/>
                     </button>
                   </tr>
                 </>
