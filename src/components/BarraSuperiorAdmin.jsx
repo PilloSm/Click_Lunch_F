@@ -11,7 +11,7 @@ export const BarraSuperiorAdmin = () => {
       </div>
       <div className="absolute w-[1040px] h-[64px] top-[71px] left-[1289px]">
         <button className="relative w-[62px] h-[61px] bg-[#47cdb8] rounded-[31px/30.5px] cursor-pointer border-none">
-          <img
+          <Image
             className="absolute w-[38px] h-[39px] top-[9px] left-[12px] object-cover"
             src="img/menu/image-12.png"
             alt="Buscar"

@@ -29,7 +29,7 @@ const BtnOpciones = () => {
                   href="/menu"
                   className="text-gray-300 hover:bg-gray-800 hover:border-l-4 hover:border-gray-300 hover:text-white block p-2 transition duration-200"
                 >
-                  <img
+                  <Image
                     className="pl-[4px]"
                     src="/img/sidebar/casa-2.png"
                     alt=""
@@ -40,7 +40,7 @@ const BtnOpciones = () => {
                   href="/client/carrito"
                   className="text-gray-300 hover:bg-gray-800 hover:border-l-4 hover:border-gray-300 hover:text-white block p-2 transition duration-200"
                 >
-                  <img
+                  <Image
                     className="pl-[4px]"
                     src="/img/sidebar/carrito-icon.png"
                     alt=""
@@ -51,7 +51,7 @@ const BtnOpciones = () => {
                   href="/client/informacion"
                   className="text-gray-300 hover:bg-gray-800 hover:border-l-4 hover:border-gray-300 hover:text-white block p-2 transition duration-200"
                 >
-                  <img
+                  <Image
                     className="pl-[4px]"
                     src="/img/sidebar/user-icon.png"
                     alt=""
@@ -59,7 +59,7 @@ const BtnOpciones = () => {
                   Perfil
                 </Link>
                 <Link href={"/client/pedidos/" + session.user.id_cuenta} className="text-gray-300 hover:bg-gray-800 hover:border-l-4 hover:border-gray-300 hover:text-white block p-2 transition duration-200">
-                  <img
+                  <Image
                     className="pl-[4px]"
                     src="/img/sidebar/reloj.png"
                     alt=""

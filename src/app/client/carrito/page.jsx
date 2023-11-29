@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import BtnOpciones from "../../../components/BtnOpciones";
 import { useSession } from "next-auth/react";
 import BtonPedir from "@/components/btonPedis";
-
+import Image from "next/image";
 function Carrito() {
   const { data: session, update } = useSession();
   const carrito = session.user.carrito;
@@ -61,7 +61,7 @@ function Carrito() {
                         handleE(item.id_comida);
                       }}
                     >
-                      <img src="/img/carrito/borrar-1.png" />
+                      <Image src="/img/carrito/borrar-1.png" />
                     </button>
                   </tr>
                 </>
