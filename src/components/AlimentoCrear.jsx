@@ -138,7 +138,7 @@ function AlimentoForm() {
 
     try {
       const resultado = await axios.post(
-        "http://localhost:3000/api/apiCafeteria/Comida",
+        "/api/apiCafeteria/Comida",
         formData,
         {
           headers: {

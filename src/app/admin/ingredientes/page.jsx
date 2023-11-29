@@ -33,7 +33,7 @@ export default function Ingredientes() {
     e.preventDefault();
     console.log(datos)
     const res = await axios.post(
-      "http://localhost:3000/api/apiCafeteria/crearIngrediente",
+      "/api/apiCafeteria/crearIngrediente",
       datos
     );
     if (res.data) {
@@ -48,7 +48,7 @@ export default function Ingredientes() {
 
   const dats = async () => {
     const res = await axios.get(
-      "http://localhost:3000/api/apiCafeteria/crearIngrediente"
+      "/api/apiCafeteria/crearIngrediente"
     );
     return res.data;
   };

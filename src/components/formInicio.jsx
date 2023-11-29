@@ -38,7 +38,7 @@ export default function FormInicio() {
       try {
         const res = await signIn("credentials", {
           ...credentials,
-          callbackUrl: "http://localhost:3000/menu ",
+          callbackUrl: "/menu ",
         });
         if (res?.error) setError(res.error);
       } catch (error) {
@@ -107,7 +107,7 @@ export default function FormInicio() {
           onClick={() => {
             if (captcha) {
               signIn("google", {
-                callbackUrl: "http://localhost:3000/menu ",
+                callbackUrl: "/menu ",
               });
             } else {
               alert("Ingresa el captcha");

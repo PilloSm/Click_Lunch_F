@@ -6,7 +6,7 @@ export default function BtonPedir({ carrito, id_cuenta, saldo }) {
   const handleSubmit = async () => {
     if (datos.total <= saldo) {
       const res = await axios.post(
-        "http://localhost:3000/api/apiCliente/pedido",
+        "/api/apiCliente/pedido",
         datos
       );
       if (res.error) return console.log(error);
