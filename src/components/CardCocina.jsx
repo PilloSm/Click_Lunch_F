@@ -1,14 +1,17 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 const CardCocina = ({ comidas }) => {
   return (
     <Link href={`/client/comida?comida=${comidas.id_comidas}`}>
       <div className="relative mx-2 w-[303px] h-[402px] top-[30px] cursor-pointer">
         <div className="relative h-full">
           <div className="w-[303px] h-[350px] top-[52px] bg-[#f4f5f6] rounded-[40px] shadow-md relative left-0"></div>
-          <img
+          <Image
             className="w-[227px] h-[227px] left-[38px] absolute top-0 object-cover rounded-full"
-            src={comidas.imagen}
+            width={277}
+            height={277}
+              src={comidas.imagen}
             alt={comidas.nombre}
           />
           <div className="absolute w-[204px] top-[249px] left-[40px] font-nunito font-normal text-black text-[28px] text-center leading-normal tracking-normal">

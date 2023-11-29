@@ -1,9 +1,5 @@
-import Link from "next/link";
-import Image from "next/image";
 import CardPedidos from "@/components/CardPedidos";
-import BarraSuperiorAdmin from "@/components/BarraSuperiorAdmin";
 import axios from "axios";
-import BtnOpcionesAdmin from "@/components/BtnOpcionesAdmin";
 async function Pedidos() {
   const res1 = await axios.get(
     "http://localhost:3000/api/apiCafeteria/pedidos/2"

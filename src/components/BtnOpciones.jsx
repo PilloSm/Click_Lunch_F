@@ -3,6 +3,7 @@ import React from "react";
 import { useState } from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
 const BtnOpciones = () => {
   const [isOpen, setIsOpen] = useState(false);
   const {data:session}=useSession()

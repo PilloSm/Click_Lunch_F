@@ -10,6 +10,7 @@ import {
   esCorreoElectronico,
   soloLetras,
 } from "@/libs/val";
+import Image from "next/image";
 import ReCAPTCHA from "react-google-recaptcha";
 export default function Registrar() {
   const [captcha, setCaptcha] = useState();
@@ -89,7 +90,7 @@ export default function Registrar() {
           <div className="text-2xl text-[#25a18ee6] font-semibold ">
             Registro
           </div>
-          <img
+          <Image
             className="w-64"
             src="https://i.ibb.co/g9czN3L/logo.png"
             alt="Logo"

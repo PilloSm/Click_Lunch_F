@@ -20,9 +20,10 @@
     "react": "^18",
     "react-dom": "^18",
     "react-google-recaptcha": "^3.1.0",
+    "react-image": "^4.1.0",
     "react-qr-scanner": "^1.0.0-alpha.11",
     "sweetalert": "^2.1.2",
-    "sweetalert2": "^11.10.1"
+    "sweetalert2": "^11.6.13"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",
