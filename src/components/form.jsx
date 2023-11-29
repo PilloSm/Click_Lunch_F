@@ -10,7 +10,10 @@ import {
   esCorreoElectronico,
   soloLetras,
 } from "@/libs/val";
+import ReCAPTCHA from "react-google-recaptcha";
 export default function Registrar() {
+  const [captcha, setCaptcha] = useState();
+
   const router = useRouter();
   const [datos, setDatos] = useState({
     nombre: "",
@@ -28,18 +31,20 @@ export default function Registrar() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!captcha) {
+      alert("ingrese captcha");
+      return;
+    }
     if (!datos.nombre || !datos.email || !datos.password || !datos.password2) {
       setError("Todos los campos son obligatorios.");
       return;
     }
 
-    // Validar el formato del correo
     if (!esCorreoElectronico(datos.email)) {
       setError("Ingresa un correo electrónico válido.");
       return;
     }
 
-    // Validar la contraseña
     if (!esContrasenaValida(datos.password)) {
       setError("La contraseña debe tener al menos 6 caracteres.");
       return;
@@ -50,7 +55,6 @@ export default function Registrar() {
       returnS;
     }
 
-    // Validar que las contraseñas coincidan
     if (datos.password !== datos.password2) {
       setError("Las contraseñas no coinciden.");
       return;
@@ -72,10 +76,9 @@ export default function Registrar() {
           email: datos.email,
           password: datos.password,
           redirect: false,
+          callbackUrl: "http://localhost:3000/menu ",
         });
-        if (res.error) console.log(res.error);
-        if (res.status === 200)
-          router.push("http://localhost:3000/client/informacion");
+        if (res.error) return console.log(res.error);
       }
     } else {
       alert("Contraseñas no hacen match <3");
@@ -151,7 +154,9 @@ export default function Registrar() {
           <button
             onClick={() => {
               if (captcha) {
-                const res = signIn("google");
+                const res = signIn("google", {
+                  callbackUrl: "http://localhost:3000/menu ",
+                });
               } else {
                 alert("Ingresa el captcha");
               }
@@ -167,9 +172,13 @@ export default function Registrar() {
               Iniciar sesión con Google
             </div>
           </button>
+          <ReCAPTCHA
+            sitekey="6LcY1x0pAAAAAJP9oTr0OHHCjlVu1ZIggttWZsYa "
+            className=""
+            onChange={setCaptcha}
+          />
         </div>
       </div>
     </form>
   );
 }
-///su puta madre fjadsjfasj
