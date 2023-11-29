@@ -76,10 +76,9 @@ export default function Registrar() {
           email: datos.email,
           password: datos.password,
           redirect: false,
+          callbackUrl: "http://localhost:3000/menu ",
         });
-        if (res.error) console.log(res.error);
-        if (res.status === 200)
-          router.push("http://localhost:3000/client/informacion");
+        if (res.error) return console.log(res.error);
       }
     } else {
       alert("Contraseñas no hacen match <3");
@@ -155,7 +154,9 @@ export default function Registrar() {
           <button
             onClick={() => {
               if (captcha) {
-                const res = signIn("google");
+                const res = signIn("google", {
+                  callbackUrl: "http://localhost:3000/menu ",
+                });
               } else {
                 alert("Ingresa el captcha");
               }
