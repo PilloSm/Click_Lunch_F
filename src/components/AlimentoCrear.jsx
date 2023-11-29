@@ -148,9 +148,10 @@ function AlimentoForm() {
   };
 
   return (
-    <div className="absolute left-[400px]">
+    <div className="absolute left-[400px] top-[60px]">
+    <h1 className="text-4xl font-bold text-center mb-8">Crear Nuevo Producto</h1>
       <form
-        className="bg-white shadow-md rounded-md px-8 pt-6 pb-8 mb-4"
+        className="bg-white shadow-md rounded-[20px] px-8 pt-6 pb-8 mb-4"
         onSubmit={handleSubmit}
         ref={form}
       >
@@ -166,13 +167,13 @@ function AlimentoForm() {
           placeholder="Nombre"
           onChange={handleChange}
           value={comidaN.nombre}
-          className="shadow appearance-none border rounded w-full py-2 px-3"
+          className="shadow appearance-none border rounded w-full py-2 px-3 flex flex-row"
           autoFocus
         />
-
+        <br />
         <label
           htmlFor="descripcion"
-          className="block text-gray-700 text-sm font-bold mb-2"
+          className="block text-gray-700 text-sm font-bold mb-2 flex flex-row"
         >
           Descripción del Producto:
         </label>
@@ -182,9 +183,9 @@ function AlimentoForm() {
           placeholder="Descripción"
           onChange={handleChange}
           value={comidaN.descripcion}
-          className="shadow appearance-none border rounded w-full py-2 px-3"
+          className="shadow appearance-none border rounded w-full py-2 px-3 flex flex-row resize-none"
         />
-
+        <br />
         <label
           htmlFor="precio"
           className="block text-gray-700 text-sm font-bold mb-2"
@@ -199,10 +200,13 @@ function AlimentoForm() {
           value={comidaN.precio}
           className="shadow appearance-none border rounded w-full py-2 px-3"
         />
+        <br />
         <div>
+        <br />
           <label>
             Número de Ingredientes:
             <input
+            className="shadow appearance-none border rounded ml-2"
               type="number"
               min={1}
               value={numeroIteraciones}
@@ -210,13 +214,15 @@ function AlimentoForm() {
                 setNumeroIteraciones(parseInt(e.target.value, 10))
               }
             />
+            <br />
           </label>
-
+          <br />
           {[...Array(numeroIteraciones)].map((_, index) => (
-            <div key={index}>
+            <div className="bt-4" key={index}>
               <label>
                 Ingrediente {index + 1}:
                 <select
+                 className="outline-black"
                   name={`select-${index}`}
                   onChange={(e) =>
                     handleIngredientChange(
@@ -226,7 +232,8 @@ function AlimentoForm() {
                     )
                   }
                 >
-                  <option value="">Seleccionar Ingrediente</option>
+                <br />
+                  <option className="mt-4" value="">Seleccionar Ingrediente</option>
                   {datos.ingrediente.map((ingrediente) => (
                     <option
                       key={ingrediente.id_ingrediente}
@@ -237,9 +244,11 @@ function AlimentoForm() {
                   ))}
                 </select>
               </label>
-              <label>
+              <br />
+              <label className="mb-4">
                 Cantidad:
                 <input
+                  className="shadow appearance-none border rounded ml-2"
                   type="number"
                   name={`cantidad-${index}`} // Nombre único para cada input
                   min={1}
@@ -248,10 +257,12 @@ function AlimentoForm() {
                   }
                   placeholder="Cantidad"
                 />
+                <br />
               </label>
             </div>
           ))}
         </div>
+        <br />
         <select
           name="tipo"
           onChange={(e) => {
@@ -261,16 +272,23 @@ function AlimentoForm() {
             });
           }}
         >
-          <option value="">Seleccinart tipo</option>
+        <br />
+          <option value="">Seleccionar tipo</option>
           {comidaN.tipo.map((item) => (
-            <option key={item.id_tipos} value={item.id_tipos}>
+            <>
+            <br />
+            <option className="pt-4" key={item.id_tipos} value={item.id_tipos}>
               {item.nombre}
             </option>
+            <br />
+            </>
           ))}
+          <br />
         </select>
+        <br />
         <label
           htmlFor="imagen"
-          className="block text-gray-700 text-sm font-bold mb-2"
+          className="block text-gray-700 text-sm font-bold mb-2 mt-4"
         >
           Imagen del Producto:
         </label>
@@ -282,6 +300,7 @@ function AlimentoForm() {
             setFile(e.target.files[0]);
           }}
         />
+        <br />
 
         {file && (
           <img
@@ -290,8 +309,8 @@ function AlimentoForm() {
             alt=""
           />
         )}
-
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <br />
+        <button className="bg-[#25a18ee6] hover:bg-[#3AAA91] text-white font-bold py-2 px-4 rounded">
           Crear Producto
         </button>
       </form>

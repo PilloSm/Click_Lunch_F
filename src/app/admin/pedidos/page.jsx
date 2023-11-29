@@ -19,7 +19,7 @@ async function Pedidos() {
   );
   return (
     <div className="bg-white flex flex-row justify-center w-full">
-      <div className="w-[1440px] h-[1640px] flex flex-wrap justify-around bg-white relative">
+      <div className="w-[1440px] h-full flex flex-wrap justify-around bg-white relative">
       <div className="absolute top-[62px] left-[582px] font-nunito font-normal text-black text-[60px] text-center leading-normal tracking-normal">
             Pedidos
           </div>

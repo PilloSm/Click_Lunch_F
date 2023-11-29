@@ -12,8 +12,6 @@ export default function InformacionCliente({ borrarCarrito }) {
     <div className="absolute w-[251px] top-[57px] left-[594px] font-nunito font-normal text-black text-[64px] leading-normal tracking-normal">
       Mi perfil
     </div>
-    <div class="absolute top-[400px] left-[1700px] w-80 h-80 rounded-full bg-[#3AAA9C] z-10">
-    </div>
     {session ? (
       <div>
         <DatosCuenta

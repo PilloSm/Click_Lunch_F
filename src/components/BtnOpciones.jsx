@@ -11,7 +11,7 @@ const BtnOpciones = () => {
       <div className="flex items-center justify-between py-2">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="absolute w-[80px] h-[80px] top-[63px] left-[78px] cursor-pointer bg-transparent border-none cursor-[5]"
+          className="fixed w-[80px] h-[80px] top-[63px] left-[78px] cursor-pointer bg-transparent border-none cursor-[5] z-9"
         >
           <img src="https://i.ibb.co/hmdxg59/btn-opciones.png" alt="menu" />
         </button>
