@@ -1,6 +1,5 @@
 import React from "react";
-import BtnOpcionesAdmin from "./BtnOpcionesAdmin";
-
+import Image from "next/image";
 export const BarraSuperiorAdmin = () => {
   return (
     <div>

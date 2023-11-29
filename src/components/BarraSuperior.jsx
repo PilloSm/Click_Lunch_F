@@ -1,6 +1,6 @@
 import React from "react";
 import BtnOpciones from "./BtnOpciones";
-
+import Image from "next/image";
 const BarraSuperior = () => {
   const lista = () => {
     const res = axios.get("/api/apiCliente/menu");
