@@ -88,19 +88,11 @@ function Carrito() {
         <div className="babsolute w-[893px] h-[88px] top-[743px] left-[567px]">
           <BtonPedir
             onClick={() => {
-              const handleE = () => {
-                const carritoN = {
-                  total: 0,
-                  comidas: [],
-                };
-                update({ carrito: carritoN });
-              };
               if (session.user.saldo < session.user.carrito.total) {
                 setError("sa");
                 return;
               } else {
                 handleE(item.id_comida);
-                
               }
             }}
             saldo={session.user.saldo}
