@@ -53,7 +53,7 @@ export default function FormComida({ comidas }) {
   };
 
   const handleSubmit = () => {
-    if (!esNumero(comida.cantidad)) {
+    if (esNumero(comida.cantidad)) {
       setError("Como asi");
       return;
     }
@@ -111,7 +111,7 @@ export default function FormComida({ comidas }) {
       </div>
 
       <div className="absolute w-[589px] h-[373px] top-[59px] left-[790px] bg-white">
-      <img className="absolute w-[386px] h-[223px] top-[27px] left-[24px] object-cover;" src={platillo.imagen} alt={platillo.nombre} alt="Comida"></img>
+      <img className="absolute w-[386px] h-[223px] top-[27px] left-[24px] object-cover;" src={platillo.imagen} alt={platillo.nombre} ></img>
       </div>
 
       <button

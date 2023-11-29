@@ -42,7 +42,7 @@ export async function POST(req) {
   } catch (error) {
     return NextResponse.json(
       { error: "ups ha ocurrido un error" },
-      { status: 500 }
+      { status: 400 }
     );
   }
 }

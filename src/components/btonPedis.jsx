@@ -2,6 +2,7 @@ import axios from "axios";
 import Link from "next/link";
 export default function BtonPedir({ carrito, id_cuenta, saldo }) {
   const datos = { ...carrito, id_cuenta };
+  var error;
   const handleSubmit = async () => {
     if (datos.total <= saldo) {
       const res = await axios.post(
@@ -10,11 +11,17 @@ export default function BtonPedir({ carrito, id_cuenta, saldo }) {
       );
       if (res.error) return console.log(error);
     } else {
+      error = "fjasd";
       alert("No tienes suficiente dinero <3");
     }
   };
+
   return (
-    <Link href={"/client/informacion?borrar=si"}>
+    <Link
+      href={
+        error ? "/client/carrito" : "/client/informacion?borrar=si"
+      }
+    >
       <button
         onClick={handleSubmit}
         className="absolute w-[528px] h-[95px] top-[759px] left-[426px] bg-[#25a18ee6] rounded-full border-none cursor-pointer"

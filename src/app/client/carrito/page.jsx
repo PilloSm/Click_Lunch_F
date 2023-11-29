@@ -7,7 +7,7 @@ import BtonPedir from "@/components/btonPedis";
 function Carrito() {
   const { data: session, update } = useSession();
   const carrito = session.user.carrito;
-
+  const [error, setError] = useState("");
   return (
     <div className="bg-white flex flex-row justify-center w-full">
       <div className="bg-white w-full md:w-[768px] lg:w-[1024px] xl:w-[1440px] h-auto relative">
@@ -62,7 +62,7 @@ function Carrito() {
                         handleE(item.id_comida);
                       }}
                     >
-                      <img src="/img/carrito/borrar-1.png"/>
+                      <img src="/img/carrito/borrar-1.png" />
                     </button>
                   </tr>
                 </>
@@ -77,10 +77,13 @@ function Carrito() {
           </div>
         )}
 
-        
         <div className="absolute w-[520px] h-[90px] top-[645px] left-[430px] bg-[#DDDDDD] border-1 border-ddd  rounded-[20px]">
-        <div className="absolute text-3xl text-3f3131 top-[30px] left-[20px]">Total</div>
-        <div className="absolute text-3xl text-3f3131 top-[30px] right-[50px]">${session.user.carrito.total}</div>
+          <div className="absolute text-3xl text-3f3131 top-[30px] left-[20px]">
+            Total
+          </div>
+          <div className="absolute text-3xl text-3f3131 top-[30px] right-[50px]">
+            ${session.user.carrito.total}
+          </div>
         </div>
 
         <div className="babsolute w-[893px] h-[88px] top-[743px] left-[567px]">
@@ -93,7 +96,13 @@ function Carrito() {
                 };
                 update({ carrito: carritoN });
               };
-              handleE(item.id_comida);
+              if (session.user.saldo < session.user.carrito.total) {
+                setError("sa");
+                return;
+              } else {
+                handleE(item.id_comida);
+                
+              }
             }}
             saldo={session.user.saldo}
             carrito={session.user.carrito}
