@@ -24,9 +24,9 @@ export default function InformacionCliente({ borrarCarrito }) {
           onClick={() => {
             signOut();
           }}
-          className="absolute w-[450px] h-[77px] top-[740px] left-[495px] bg-[#25a18ee6] rounded-full border-none cursor-pointer"
+          className="absolute w-[450px] h-[60px] top-[740px] left-[495px] bg-[#25a18ee6] rounded-full border-none cursor-pointer"
         >
-          <div className="absolute w-[338px] h-[20px] top-[28px] left-[56px] font-poppins font-bold text-white text-[24px] text-center leading-[20px]">
+          <div className="absolute w-[338px] h-[20px] top-[18px] left-[56px] font-poppins font-bold text-white text-[24px] text-center leading-[20px]">
             Cerrar sesión
           </div>
         </button>

@@ -27,7 +27,7 @@ export default async function TablaPedidos({ id_cuenta }) {
   });
 
   return (
-    <table className="absolute min-w-full max-w-md bg-white border border-gray-300 top-[180px] mx-auto">
+    <table className="absolute min-w-full max-w-md bg-white border border-gray-300 top-[180px] mx-5 mr-5">
   <thead className="bg-[#25a18ee6]">
     <tr>
       <th className="py-2 px-2 md:px-4 border-b">ID Pedido</th>
