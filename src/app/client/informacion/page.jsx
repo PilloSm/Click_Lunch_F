@@ -7,10 +7,9 @@ export default function Informacion(request) {
   return (
     <div className="bg-white flex flex-row justify-center w-full h-[1000px]">
 
-    <div class="absolute top-[400px] left-[1700px] w-80 h-80 rounded-full bg-[#3AAA9C] z-10">
+    <div className="absolute top-[400px] left-[1700px] w-80 h-80 rounded-full bg-[#3AAA9C] z-10">
     </div>
       <InformacionCliente borrarCarrito={searchParams.borrar} />
-      {/* <TablaPedidos id_cuenta={searchParams.id_cuenta} /> */}
     </div>
   );
 }

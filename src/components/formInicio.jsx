@@ -4,6 +4,7 @@ import { useState } from "react";
 import logo from "../../public/img/index/logo.png";
 import Link from "next/link";
 import ReCAPTCHA from "react-google-recaptcha";
+import { Mail, Lock } from "lucide-react";
 export default function FormInicio() {
   const [credentials, setCredentials] = useState({
     email: "",
