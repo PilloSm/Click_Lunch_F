@@ -42,21 +42,21 @@ export default async function TablaPedidos({ id_cuenta }) {
   <tbody>
     {res.data.map((pedido) => (
       <tr key={pedido.id_pedido}>
-        <td className="py-2 px-2 md:px-4 border-b">{pedido.id_pedido}</td>
-        <td className="py-2 px-2 md:px-4 border-b">{pedido.total}</td>
-        <td className="py-2 px-2 md:px-4 border-b">{pedido.estado_nombre}</td>
-        <td className="py-2 px-2 md:px-4 border-b">{pedido.fecha}</td>
-        <td className="py-2 px-2 md:px-4 border-b">
+        <td className="py-2 px-2 md:px-4 border-b text-center">{pedido.id_pedido}</td>
+        <td className="py-2 px-2 md:px-4 border-b text-center">{pedido.total}</td>
+        <td className="py-2 px-2 md:px-4 border-b text-center">{pedido.estado_nombre}</td>
+        <td className="py-2 px-2 md:px-4 border-b text-center">{pedido.fecha}</td>
+        <td className="py-2 px-2 md:px-4 border-b text-center">
           {pedido.cantidades_detalles.split(",").map((detalle, index) => (
             <div key={index} className="mb-1">{detalle}</div>
           ))}
         </td>
-        <td className="py-2 px-2 md:px-4 border-b">
+        <td className="py-2 px-2 md:px-4 border-b text-center">
           {pedido.precios_detalles.split(",").map((detalle, index) => (
             <div key={index} className="mb-1">{detalle}</div>
           ))}
         </td>
-        <td className="py-2 px-2 md:px-4 border-b">
+        <td className="py-2 px-2 md:px-4 border-b text-center">
           {pedido.nombres_comidas.split(",").map((detalle, index) => (
             <div key={index} className="mb-1">{detalle}</div>
           ))}
