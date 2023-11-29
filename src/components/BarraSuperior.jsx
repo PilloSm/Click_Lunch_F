@@ -19,7 +19,7 @@ export default function BarraSuperior () {
                   className="w-[920px] h-[50px] top-[-10%] absolute left-[59px] text-[25px] bg-[rgb(230,231,233)] border-none outline-none"
                   placeholder="Buscar"
                 />
-                <Image
+                <img
                   className="absolute w-[37px] h-[37px] top-0 left-0"
                   src="img/menu/icono_busc.png"
                   alt="Buscar"
@@ -31,7 +31,7 @@ export default function BarraSuperior () {
       </div>
       <div className="absolute w-[1040px] h-[64px] top-[71px] left-[1289px]">
         <button className="relative w-[62px] h-[61px] bg-[#47cdb8] rounded-[31px/30.5px] cursor-pointer border-none">
-          <Image
+          <img
             className="absolute w-[38px] h-[39px] top-[9px] left-[12px] object-cover"
             src="img/menu/image-12.png"
             alt="Buscar"

@@ -1,7 +1,7 @@
 import axios from "axios";
 import CardCocina from "@/components/CardCocina";
 async function Menu() {
-  const res = await axios.get("http://localhost:3000/api/apiCliente/menu");
+  const res = await axios.get("/api/apiCliente/menu");
   const comidas = res.data;
   return (
     <form className="bg-white flex flex-col items-center justify-center w-full overflow-hidden min-h-screen">

@@ -302,7 +302,6 @@ function AlimentoForm() {
         </select>
         <br />
         <label
-          htmlFor="imagen"
           className="block text-gray-700 text-sm font-bold mb-2 mt-4"
         >
           Imagen del Producto:
@@ -318,7 +317,7 @@ function AlimentoForm() {
         <br />
 
         {file && (
-          <Image
+          <img
             className="w-96 object-contain mx-auto my-4"
             src={URL.createObjectURL(file)}
             alt=""

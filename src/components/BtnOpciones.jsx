@@ -3,7 +3,6 @@ import React from "react";
 import { useState } from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
-import Image from "next/image";
 const BtnOpciones = () => {
   const [isOpen, setIsOpen] = useState(false);
   const {data:session}=useSession()
@@ -13,7 +12,7 @@ const BtnOpciones = () => {
         onClick={() => setIsOpen(!isOpen)}
         className="w-50 h-50 cursor-pointer bg-transparent border-none"
       >
-        <Image
+        <img
          src="https://i.ibb.co/hmdxg59/btn-opciones.png" alt="menu" />
       </button>
 
@@ -31,7 +30,7 @@ const BtnOpciones = () => {
                   href="/menu"
                   className="text-gray-300 hover:bg-gray-800 hover:border-l-4 hover:border-gray-300 hover:text-white block p-2 transition duration-200"
                 >
-                  <Image
+                  <img
                     className="pl-[4px]"
                     src="/img/sidebar/casa-2.png"
                     alt=""
@@ -42,7 +41,7 @@ const BtnOpciones = () => {
                   href="/client/carrito"
                   className="text-gray-300 hover:bg-gray-800 hover:border-l-4 hover:border-gray-300 hover:text-white block p-2 transition duration-200"
                 >
-                  <Image
+                  <img
                     className="pl-[4px]"
                     src="/img/sidebar/carrito-icon.png"
                     alt=""
@@ -53,7 +52,7 @@ const BtnOpciones = () => {
                   href="/client/informacion"
                   className="text-gray-300 hover:bg-gray-800 hover:border-l-4 hover:border-gray-300 hover:text-white block p-2 transition duration-200"
                 >
-                  <Image
+                  <img
                     className="pl-[4px]"
                     src="/img/sidebar/user-icon.png"
                     alt=""
@@ -61,7 +60,7 @@ const BtnOpciones = () => {
                   Perfil
                 </Link>
                 <Link href={"/client/pedidos/" + session.user.id_cuenta} className="text-gray-300 hover:bg-gray-800 hover:border-l-4 hover:border-gray-300 hover:text-white block p-2 transition duration-200">
-                  <Image
+                  <img
                     className="pl-[4px]"
                     src="/img/sidebar/reloj.png"
                     alt=""

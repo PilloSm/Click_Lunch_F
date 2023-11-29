@@ -7,7 +7,7 @@ const CardCocina = ({ comidas }) => {
       <div className="relative mx-2 w-[303px] h-[402px] top-[30px] cursor-pointer">
         <div className="relative h-full">
           <div className="w-[303px] h-[350px] top-[52px] bg-[#f4f5f6] rounded-[40px] shadow-md relative left-0"></div>
-          <Image
+          <img
             className="w-[227px] h-[227px] left-[38px] absolute top-0 object-cover rounded-full"
             width={277}
             height={277}
