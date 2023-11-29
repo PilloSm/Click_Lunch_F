@@ -24,10 +24,13 @@ function Carrito() {
                   Producto
                 </th>
                 <th className="border border-gray-300 justify-center bg-[#25a18ee6] text-[white] text-center py-2 px-3">
-                  cantidad
+                  Cantidad
                 </th>
                 <th className="border border-gray-300 justify-center bg-[#25a18ee6] text-[white] text-center py-2 px-3">
-                  subtotal
+                  Subtotal
+                </th>
+                <th className="border border-gray-300 justify-center bg-[#25a18ee6] text-[white] text-center py-2 px-3">
+                  Acciones
                 </th>
               </tr>
             </thead>

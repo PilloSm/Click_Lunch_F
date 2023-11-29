@@ -1,6 +1,6 @@
 // Función para validar si un valor es un número
 export function esNumero(valor) {
-  return typeof valor === "number" && !isNaN(valor) && valor>=0;
+  return typeof valor === "number" && !isNaN(valor);
 }
 
 // Función para validar si un valor es un correo electrónico

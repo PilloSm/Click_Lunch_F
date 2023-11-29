@@ -53,7 +53,7 @@ export default function FormComida({ comidas }) {
   };
 
   const handleSubmit = () => {
-    if (esNumero(comida.cantidad)) {
+    if (!esNumero(comida.cantidad)) {
       setError("Como asi");
       return;
     }
@@ -102,6 +102,7 @@ export default function FormComida({ comidas }) {
           type="number"
           className="text-center text-[42px] absolute w-[274px] h-[84px] top-0 left-0 bg-white rounded-[10px] border-4 border-black"
           name="cantidad"
+          placeholder="1"
           min={1}
           max={platillo.cantidad_preparable}
           onChange={handleChange}
@@ -110,14 +111,8 @@ export default function FormComida({ comidas }) {
       </div>
 
       <div className="absolute w-[589px] h-[373px] top-[139px] left-[790px] bg-white">
-        <img
-          className="absolute w-[546px] h-[323px] top-[27px] left-[24px] object-cover;"
-          src={"img/compra/image-9.png"}
-          alt="Food"
-        />
+      <img className="absolute w-[546px] h-[323px] top-[27px] left-[24px] object-cover;" src={platillo.imagen} alt={platillo.nombre} alt="Comida"></img>
       </div>
-
-      <img src={platillo.imagen} alt={platillo.nombre}></img>
 
       <button
         onClick={handleSubmit}

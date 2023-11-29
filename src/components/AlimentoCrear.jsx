@@ -140,7 +140,7 @@ function AlimentoForm() {
       console.log(resultado);
       form.current.reset();
       router.refresh();
-      router.push("/admin/pedidos");
+        router.push("/admin/pedidos");
     } catch (error) {
       console.log(error);
       console.error("Error al enviar la comida:", error);

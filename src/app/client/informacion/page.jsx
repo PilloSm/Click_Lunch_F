@@ -5,8 +5,11 @@ export default function Informacion(request) {
   const { searchParams } = request;
   
   return (
-    <div className="bg-white flex flex-row justify-center w-full h-[1000px]">    
+    <div className="bg-white flex flex-row justify-center w-full h-[1000px]">
+
+    
       <InformacionCliente borrarCarrito={searchParams.borrar} />
+      {/* <TablaPedidos id_cuenta={searchParams.id_cuenta} /> */}
     </div>
   );
 }

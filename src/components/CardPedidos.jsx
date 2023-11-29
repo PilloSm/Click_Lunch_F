@@ -1,7 +1,6 @@
 "use client";
 
 import axios from "axios";
-import { useRouter } from "next/navigation";
 
 export default function CardPedidos({
   id_pedido,
@@ -12,21 +11,22 @@ export default function CardPedidos({
   estado_actual_nombre,
   estado_actual_id,
 }) {
-  const router = useRouter();
   const handleEditar = async (e) => {
+    console.log('da')
     const res = await axios.put(
       `http://localhost:3000/api/apiCafeteria/cambiarEstadoPedido/${id_pedido}`,
       { estado: estado_actual_id }
     );
-    router.push("/admin/pedidos");
+    console.log(res)
   };
   const handleCancelar = async (e) => {
-    console.log("sa");
+    console.log('sa')
     const res = await axios.post(
       `http://localhost:3000/api/apiCafeteria/cambiarEstadoPedido/${id_pedido}`,
       { estado: 1 }
     );
-    router.push("/admin/pedidos");
+    console.log(res)
+
   };
   return (
     <div className="relative mx-2 w-[303px] h-[402px] top-[30px] cursor-pointer">
@@ -38,19 +38,12 @@ export default function CardPedidos({
           <br />
           usuarios:{id_cuenta}
         </div>
-        {estado_siguiente_nombre === "Ingreso Saldo" ? (
-          <div></div>
-        ) : (
-          <button
-            onClick={() => {
-              console.log("sa");
-              handleEditar();
-            }}
-            className="absolute w-[120px] h-[40px] bottom-[20px] left-[10px] bg-[#2471C9] rounded-[20px] border-none cursor-pointer leading-normal text-center flex items-center justify-center text-white text-[16px]"
-          >
-            <div className="pedir">{estado_siguiente_nombre}</div>
-          </button>
-        )}
+        <button
+          onClick={handleEditar}
+          className="absolute w-[120px] h-[40px] bottom-[20px] left-[10px] bg-[#2471C9] rounded-[20px] border-none cursor-pointer leading-normal text-center flex items-center justify-center text-white text-[16px]"
+        >
+          <div className="pedir">{estado_siguiente_nombre}</div>
+        </button>
         {estado_actual_nombre == "pedir" ? (
           <button
             onClick={handleCancelar}
