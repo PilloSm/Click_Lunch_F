@@ -88,6 +88,7 @@ export default function Actualizar() {
                           ...prevComidaN,
                           ingredientes: [...prevComidaN.ingredientes],
                         }));
+                        alert('se actualizo')
                       } else {
                         alert("</3");
                       }

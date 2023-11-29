@@ -7,9 +7,9 @@ import Swal from "sweetalert2";
 export default function Ingredientes() {
   const [datos, setDatos] = useState({
     nombre: "",
-    cantidad: "",
+    cantidad: 0,
     precio: 0,
-    unidad: "",
+    unidad: 0,
   });
   const [unidades, setUnidades] = useState([]); // Estado para almacenar las unidades
   const router = useRouter();
@@ -31,6 +31,7 @@ export default function Ingredientes() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(datos)
     const res = await axios.post(
       "http://localhost:3000/api/apiCafeteria/crearIngrediente",
       datos
@@ -57,9 +58,6 @@ export default function Ingredientes() {
     <div className="w-[1440px] h-[1000px] flex flex-wrap justify-around bg-white relative">
 
     <div className="absolute w-[600px] h-[800px] top-[80px] left-[504px] shadow-lg rounded-[50px]">
-    {/* <div class="absolute top-[400px] left-[1700px] w-80 h-80 rounded-full bg-[#3AAA9C] z-10">
-    </div> */}
-
     <div className="absolute top-[24px] left-[120px] font-nunito font-normal text-black text-[40px] text-center leading-normal tracking-normal">
             Crear Ingrediente
           </div>
