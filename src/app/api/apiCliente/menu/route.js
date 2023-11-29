@@ -34,7 +34,6 @@ export async function GET() {
       }
     }
 
-    console.log('Comidas disponibles:', comidasDisponibles);
     return NextResponse.json(comidasDisponibles)
   } catch (error) {
     console.error('Error al ejecutar las consultas:', error);

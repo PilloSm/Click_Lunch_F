@@ -46,7 +46,6 @@ function AlimentoForm() {
       );
 
       setIngredientesSeleccionados(nuevosIngredientes);
-      console.log(ingredientesSeleccionados);
     } else {
       if (cambiar === "id_ingrediente") {
         setIngredientesSeleccionados([
@@ -59,8 +58,6 @@ function AlimentoForm() {
           { index, id_ingrediente: "", cantidad: elemento },
         ]);
       }
-
-      console.log(ingredientesSeleccionados);
     }
   };
 
@@ -68,7 +65,6 @@ function AlimentoForm() {
     axios.get(`/api/apiCafeteria/ingredientes`).then((res) => {
       const { nombre, descripcion, precio, imagen, ingredientes, tipos } =
         res.data;
-      console.log(res.data.ingredientes);
       setComidaN({
         nombre: nombre,
         descripcion: descripcion,
@@ -116,7 +112,6 @@ function AlimentoForm() {
       return;
     }
 
-    console.log(ingredientesSeleccionados);
     const formData = new FormData();
     formData.append("nombre", comidaN.nombre);
     formData.append("descripcion", comidaN.descripcion);
@@ -137,12 +132,10 @@ function AlimentoForm() {
           },
         }
       );
-      console.log(resultado);
       form.current.reset();
       router.refresh();
         router.push("/admin/pedidos");
     } catch (error) {
-      console.log(error);
       console.error("Error al enviar la comida:", error);
     }
   };

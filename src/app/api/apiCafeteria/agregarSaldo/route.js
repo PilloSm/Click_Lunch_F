@@ -32,7 +32,10 @@ export async function PUT(request) {
         total: saldoMas,
         estado: 6,
       });
-      return NextResponse.json({message:'todo bien',saldo:saldoNuevo},{status:200});
+      return NextResponse.json(
+        { message: "todo bien", saldo: saldoNuevo },
+        { status: 200 }
+      );
     } else {
       return NextResponse.json(
         { message: "Ha ocurrido un error" },
@@ -40,7 +43,6 @@ export async function PUT(request) {
       );
     }
   } catch (error) {
-    console.error("Error en el servidor:", error);
     return NextResponse.json(
       { error: "Ha habido un error en el servidor" },
       { status: 500 }

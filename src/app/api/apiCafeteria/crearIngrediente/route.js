@@ -7,7 +7,6 @@ export async function POST(request) {
     const res = await conn.query("INSERT into cat_ingredientes SET ?", data);
     if (res.error)
       return NextResponse.json({ error: res.error }, { status: 400 });
-    console.log(res);
     const result = await conn.query("INSERT INTO extras_ingredientes set ?", {
       id_ingredientes: res[0].insertId,
       cantidad: data.cantidad,
@@ -20,7 +19,6 @@ export async function POST(request) {
       { status: 200 }
     );
   } catch (error) {
-    console.log(error);
     return NextResponse.json({ error: error }, { status: 500 });
   }
 }

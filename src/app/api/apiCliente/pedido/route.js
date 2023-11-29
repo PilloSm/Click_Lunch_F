@@ -79,10 +79,8 @@ JOIN
 WHERE
   m.id_cuenta=${id} and m.estado!=6
 `);
-    console.log(res);
     return NextResponse.json(res[0]);
   } catch (error) {
-    console.log(error);
     return NextResponse.json(
       { message: "ups ha habido un error" },
       { status: 500 }

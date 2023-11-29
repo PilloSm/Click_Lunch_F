@@ -24,7 +24,6 @@ GROUP BY m_pedidos.id_pedido;
 `);
     return NextResponse.json(res[0]);
   } catch (error) {
-    console.log(error);
     return NextResponse.json(
       { message: "Ha ocurrido un error" },
       { status: 500 }

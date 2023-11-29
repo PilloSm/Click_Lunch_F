@@ -27,7 +27,6 @@ GROUP BY
         { error: "Producto no encontrado" },
         { status: 500 }
       );
-      console.log(cantidad[0])
     return NextResponse.json(cantidad[0]);
   } catch (error) {
     return NextResponse.json({ error: error }, { status: 500 });

@@ -6,12 +6,10 @@ export async function POST(req) {
   try {
     const data = await req.json();
     const email = data.email;
-    console.log(email)
     const res = await conn.query(
       "SELECT * FROM cat_usuarios where email=?",
       email
     );
-    console.log(res[0]);
     if (res[0].length > 0) {
       return NextResponse.json(
         { message: "Usuarios ya registrado" },
@@ -30,7 +28,6 @@ export async function POST(req) {
       "INSERT INTO cat_usuarios SET ?",
       credentials
     );
-    console.log(result);
     if (result[0].affectedRows > 0) {
       const usuarioR = await conn.query(
         "SELECT id_cuenta, nombre, email, saldo, tipo FROM cat_usuarios where email=?",

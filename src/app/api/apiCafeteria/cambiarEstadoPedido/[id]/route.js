@@ -11,7 +11,6 @@ export async function PUT(request, { params }) {
     const res = await conn.query("SELECT * FROM m_pedidos");
     return NextResponse.json(res);
   } catch (error) {
-    console.log(error);
     return NextResponse.json({ error: error }, { status: 400 });
   }
 }
@@ -28,7 +27,6 @@ export async function POST(request, { params }) {
     );
     return NextResponse.json(res);
   } catch (error) {
-    console.log(error);
     return NextResponse.json({ error: error }, { status: 400 });
   }
 }
