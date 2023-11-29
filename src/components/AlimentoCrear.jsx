@@ -2,8 +2,10 @@
 import axios from "axios";
 import { useRef, useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
+import { esCorreoElectronico, esNumero, soloLetras } from "@/libs/val";
 
 function AlimentoForm() {
+  const [error, setError] = useState("");
   const [numeroIteraciones, setNumeroIteraciones] = useState(1);
   const [ingredientesSeleccionados, setIngredientesSeleccionados] = useState(
     []
@@ -81,6 +83,39 @@ function AlimentoForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!soloLetras(comidaN.nombre) || !soloLetras(comidaN.descripcion)) {
+      setError("DS");
+      return;
+    }
+    if (esNumero(comidaN.precio)) {
+      setError("ds");
+      return;
+    }
+    if (!file) {
+      setError("dsa");
+      return;
+    }
+
+    if (!ingredientesSeleccionados.length > 0) {
+      setError("da");
+      return;
+    }
+    if (
+      !ingredientesSeleccionados.every(
+        (ingrediente) => ingrediente.id_ingrediente && ingrediente.cantidad
+      )
+    ) {
+      setError(
+        "Alguno de los ingredientes seleccionados tiene propiedades nulas."
+      );
+      return;
+    }
+
+    if (!comidaN.tipo.find((tipo) => tipo.id_tipos === datos.tipo)) {
+      setError("Seleccione un tipo válido.");
+      return;
+    }
+
     console.log(ingredientesSeleccionados);
     const formData = new FormData();
     formData.append("nombre", comidaN.nombre);
@@ -89,7 +124,7 @@ function AlimentoForm() {
     if (file) {
       formData.append("imagen", file);
     }
-    formData.append("ingredientes", JSON.stringify(ingredientesSeleccionados))
+    formData.append("ingredientes", JSON.stringify(ingredientesSeleccionados));
     formData.append("tipos", datos.tipo);
 
     try {
@@ -102,10 +137,10 @@ function AlimentoForm() {
           },
         }
       );
-      console.log(resultado)
+      console.log(resultado);
       form.current.reset();
       router.refresh();
-      // router.push("/admin/pedidos");
+        router.push("/admin/pedidos");
     } catch (error) {
       console.log(error);
       console.error("Error al enviar la comida:", error);
