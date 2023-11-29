@@ -73,6 +73,19 @@ const BtnOpcionesAdmin = () => {
                   />
                   Ingredientes
                 </Link>
+
+                <Link
+                  href="/admin/actualizarIngredientes"
+                  className="text-gray-300 hover:bg-gray-800 hover:border-l-4 hover:border-gray-300 hover:text-white block p-2 transition duration-200"
+                >
+                  <img
+                    className="pl-[4px]"
+                    src="/img/sidebar/icons8-actualizar-30.png"
+                    alt=""
+                  />
+                  Actualizar Ingrediente
+                </Link>
+
                 <button
                   className="text-gray-300 hover:bg-gray-800 hover:border-l-4 hover:border-gray-300 hover:text-white block p-2 transition duration-200"
                   onClick={() => {

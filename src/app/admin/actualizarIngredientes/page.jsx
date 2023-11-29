@@ -38,74 +38,72 @@ export default function Actualizar() {
 
   return (
     <>
-      <div>
-        <BtnOpcionesAdmin />
-
-        <div className="absolute w-[431px] top-[52px] left-[502px] font-nunito font-normal text-black text-[60px] text-center leading-normal tracking-normal">
-          {comidaN.nombre}
-        </div>
-        <p className="absolute w-[431px] top-[152px] left-[565px] font-nunito font-normal text-black text-[30px]">
-          {comidaN.descripcion}
-        </p>
-        <p className="absolute w-[431px] top-[222px] left-[572px] font-nunito bold font-normal text-black text-[20px]">
-          Precio: ${comidaN.precio}
-        </p>
-
-        <div className="absolute w-2500 top-[302px] left-[920px] border-t border-gray-500 w-[300px]"></div>
-        <h2 className="absolute w-[431px] top-[282px] left-[592px] font-nunito font-normal text-black text-[40px]">
-          Ingredientes:
-        </h2>
-        <div className="absolute w-2500 top-[302px] left-[200px] border-t border-gray-500 w-[300px]"></div>
-
-        {comidaN.ingredientes.map((ingrediente, index) => (
-          <div key={index}>
-            <p>{ingrediente.nombre}</p>
-            <p>Cantidad:</p>
-
-            <div>
-              <input
-                type="number"
-                name={ingrediente.nombre}
-                onChange={handleChangeCantidad}
-                placeholder={ingrediente.cantidad}
-              />
-            </div>
-
-            <button
-              className="flex bg-black absolute h-6 gap-x-56"
-              onClick={async () => {
-                const encontrado = comidaN.ingredientes.find(
-                  (item) => item.id_ingrediente === ingrediente.id_ingrediente
-                );
-
-                if (encontrado) {
-                  encontrado.cantidad = comidaN[encontrado.nombre];
-                  console.log(encontrado.cantidad);
-
-                  const res = await axios.put(
-                    `http://localhost:3000/api/apiCafeteria/ingredientes`,
-                    {
-                      cantidad: encontrado.cantidad,
-                      id_ingrediente: encontrado.id_ingrediente,
-                    }
-                  );
-
-                  setComidaN((prevComidaN) => ({
-                    ...prevComidaN,
-                    ingredientes: [...prevComidaN.ingredientes],
-                  }));
-                } else {
-                  alert("</3");
-                }
-              }}
-            >
-              zaz
-            </button>
+      <div className="flex items-center justify-center h-screen">
+        <div className="w-[600px] shadow-lg rounded-[50px] p-8">
+          <h1 className="text-center text-2xl font-nunito font-bold text-black mb-2">
+            Actualizar Ingredientes
+          </h1>
+          <div className="text-4xl font-nunito font-bold text-center text-black mb-4">
+            {comidaN.nombre}
           </div>
-        ))}
+          <p className="text-center font-nunito font-normal text-black text-lg mb-4">
+            {comidaN.descripcion}
+          </p>
+          <p className="text-center font-nunito bold font-normal text-black text-base mb-4">
+            Precio: ${comidaN.precio}
+          </p>
+
+          <div className="flex flex-col space-y-4">
+            {comidaN.ingredientes.map((ingrediente, index) => (
+              <div className="flex flex-col space-y-1 items-center" key={index}>
+                <p className="text-lg font-nunito font-semibold">{ingrediente.nombre}</p>
+                <p className="text-base font-nunito">Cantidad:</p>
+                <div className="flex items-center">
+                  <input
+                    type="number"
+                    name={ingrediente.nombre}
+                    onChange={handleChangeCantidad}
+                    placeholder={ingrediente.cantidad}
+                    className="border border-gray-300 p-1 rounded"
+                  />
+                  <button
+                    className="bg-[#25a18ee6] text-white p-1 rounded ml-2"
+                    onClick={async () => {
+                      const encontrado = comidaN.ingredientes.find(
+                        (item) => item.id_ingrediente === ingrediente.id_ingrediente
+                      );
+
+                      if (encontrado) {
+                        encontrado.cantidad = comidaN[encontrado.nombre];
+
+                        const res = await axios.put(
+                          `http://localhost:3000/api/apiCafeteria/ingredientes`,
+                          {
+                            cantidad: encontrado.cantidad,
+                            id_ingrediente: encontrado.id_ingrediente,
+                          }
+                        );
+
+                        setComidaN((prevComidaN) => ({
+                          ...prevComidaN,
+                          ingredientes: [...prevComidaN.ingredientes],
+                        }));
+                      } else {
+                        alert("</3");
+                      }
+                    }}
+                  >
+                    Actualizar Ingrediente
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
+
       <table>
-        //tabla para ver entradas y salidas
+        {/* tabla para ver entradas y salidas */}
       </table>
     </>
   );

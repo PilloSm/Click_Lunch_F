@@ -82,8 +82,8 @@ export default function FormComida({ comidas }) {
       <div className="absolute w-[325px] top-[64px] left-[298px] font-nunito font-semibold text-black text-[64px] rounded-[40px] leading-normal tracking-normal whitespace-nowrap">
         {platillo.nombre}
       </div>
-      <p className="absolute w-[595px] h-[277px] top-[201px] left-[115px] resize-none bg-[white] text-[34px]">
-        {platillo.descripcion}
+      <p className="absolute w-[595px] top-[201px] left-[115px] border border-black p-4 text-black rounded-[50px]">
+    {platillo.descripcion}
       </p>
 
       <p className="absolute w-[325px] top-[537px] left-[119px] font-nunito font-nunito font-bold text-black text-[64px] leading-normal tracking-normal">
@@ -111,7 +111,7 @@ export default function FormComida({ comidas }) {
       </div>
 
       <div className="absolute w-[589px] h-[373px] top-[139px] left-[790px] bg-white">
-      <img className="absolute w-[546px] h-[323px] top-[27px] left-[24px] object-cover;" src={platillo.imagen} alt={platillo.nombre}></img>
+      <img className="absolute w-[546px] h-[323px] top-[27px] left-[24px] object-cover;" src={platillo.imagen} alt={platillo.nombre} alt="Comida"></img>
       </div>
 
       <button

@@ -7,25 +7,24 @@ const BtnOpciones = () => {
   const [isOpen, setIsOpen] = useState(false);
   const {data:session}=useSession()
   return (
-    <div className="container mx-auto px-4">
-      <div className="flex items-center justify-between py-2">
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="fixed w-[80px] h-[80px] top-[63px] left-[78px] cursor-pointer bg-transparent border-none cursor-[5] z-9"
-        >
-          <img src="https://i.ibb.co/hmdxg59/btn-opciones.png" alt="menu" />
-        </button>
+    <div className="fixed top-50 left-50 z-50 p-4">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-50 h-50 cursor-pointer bg-transparent border-none"
+      >
+        <img src="https://i.ibb.co/hmdxg59/btn-opciones.png" alt="menu" />
+      </button>
 
-        {isOpen && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-start z-10">
-            <div className="bg-gray-900 w-64 h-screen p-4">
-              <button
-                onClick={() => setIsOpen(false)}
-                className="text-white text-lg mb-4"
-              >
-                ✖️
-              </button>
-              <nav className="space-y-4">
+      {isOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-start z-40">
+          <div className="bg-gray-900 w-64 h-screen p-4">
+            <button
+              onClick={() => setIsOpen(false)}
+              className="text-white text-lg mb-4"
+            >
+              ✖️
+            </button>
+            <nav className="space-y-4">
                 <Link
                   href="/menu"
                   className="text-gray-300 hover:bg-gray-800 hover:border-l-4 hover:border-gray-300 hover:text-white block p-2 transition duration-200"
@@ -67,11 +66,10 @@ const BtnOpciones = () => {
                   />
                   <div>Pedidos</div>
                 </Link>
-              </nav>
-            </div>
+                </nav>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

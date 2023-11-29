@@ -52,7 +52,7 @@ export default function CardPedidos({
             <div className="pedir">Cancelar Pedido</div>
           </button>
         ) : (
-          <p className="flex left-[1px]">NO</p>
+          <h1 className="absolute w-[120px] h-[100px] bottom-[0px] left-[185px] left-1px font-bold text-[40px]">NO</h1>
         )}
       </div>
     </div>
