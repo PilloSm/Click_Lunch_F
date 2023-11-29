@@ -162,7 +162,7 @@ export default function Registrar() {
             className=" bg-[#EFEFEF] rounded-full border-none my-4 cursor-pointer"
           >
             <div className="font-poppins-bold flex flex-row justify-center items-center p-2 text-black  text-center ">
-              <img
+              <Image
                 className="w-8"
                 src="https://i.ibb.co/xJRLWfJ/gugulnobg-removebg-preview.png"
                 alt=""

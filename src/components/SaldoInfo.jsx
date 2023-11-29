@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const SaldoInfo = ({ cuenta, saldo }) => {
   return (
     <>
@@ -7,7 +9,7 @@ const SaldoInfo = ({ cuenta, saldo }) => {
       <div className="absolute w-[325px] top-[207px] left-[557px] font-nunito font-normal text-[#d9d9d9] text-[36px] leading-normal tracking-normal">
         {cuenta}
       </div>
-      <img
+      <Image
         className="absolute w-[109px] h-[109px] top-[282px] left-[577px]"
         src="img/agregar-saldo/icono-moneda.svg"
         alt="Icono Moneda"

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { esNumero } from "@/libs/val";
-
+import Image from "next/image";
 export default function FormComida({ comidas }) {
   const router = useRouter();
   const [error, setError] = useState("");
