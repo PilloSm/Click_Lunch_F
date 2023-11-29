@@ -47,7 +47,7 @@ export default function Registrar() {
 
     if (!soloLetras(datos.nombre)) {
       setError("Nombre invalido");
-      returnS;
+      return;
     }
 
     // Validar que las contraseñas coincidan
