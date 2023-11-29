@@ -21,7 +21,6 @@ export default async function TablaPedidos({ id_cuenta }) {
         nombre: nombresComidas[index],
       }));
     } else {
-      console.error("Las longitudes de los arrays no coinciden.");
       return [];
     }
   });

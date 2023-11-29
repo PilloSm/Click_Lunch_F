@@ -9,7 +9,6 @@ export async function GET() {
     const ingrediente = tot;
     return NextResponse.json(ingrediente);
   } catch (error) {
-    console.log(error);
     return NextResponse.json(
       { message: "Ups ha ocurrido un error" },
       { status: 500 }
@@ -20,7 +19,6 @@ export async function GET() {
 export async function PUT(request) {
   try {
     const data = await request.json();
-    console.log(data)
     const result = await conn.query(
       "select cantidad from cat_ingredientes where id_ingrediente=?",
       data.id_ingrediente
@@ -47,7 +45,6 @@ export async function PUT(request) {
       return NextResponse.json(extras[0]);
     }
   } catch (error) {
-    console.log(error);
-    return NextResponse.json({ message: error }, { status: 500 });
+    return NextResponse.json({ message: error }, { status: 400 });
   }
 }

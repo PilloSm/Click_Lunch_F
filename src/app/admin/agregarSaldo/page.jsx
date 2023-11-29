@@ -19,7 +19,6 @@ function AgregarSaldoAdmin() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(datos.saldoMas)
     const confirmacion = await Swal.fire({
       title: "¿Son correctos los datos?",
       icon: "question",

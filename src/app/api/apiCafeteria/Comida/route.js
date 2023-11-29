@@ -6,7 +6,6 @@ import Ingredientes from "@/app/admin/ingredientes/page";
 export async function POST(request) {
   try {
     const data = await request.formData();
-    console.log(data);
     const imagen = data.get("imagen");
     if (!imagen) {
       return NextResponse.json(
@@ -29,7 +28,6 @@ export async function POST(request) {
           },
           async (err, result) => {
             if (err) {
-              console.log(err);
               reject(err);
             }
             resolve(result);
@@ -64,7 +62,6 @@ export async function POST(request) {
     };
     return NextResponse.json(results);
   } catch (error) {
-    console.log(error)
     return NextResponse.json(
       {
         message: error.message,

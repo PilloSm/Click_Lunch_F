@@ -2,7 +2,6 @@ import { conn } from "@/libs/db";
 import { NextResponse } from "next/server";
 
 export async function GET(request,params) {
-  console.log(params.id);
   try {
     const res = await conn.query(
       "SELECT * FROM cat_comidas where id_comidas=?",

@@ -59,9 +59,7 @@ export default function Registrar() {
       setError("Las contraseñas no coinciden.");
       return;
     }
-    console.log(datos.password, datos.password2);
     if (datos.password === datos.password2) {
-      console.log(datos);
       const res = await axios.post(
         "http://localhost:3000/api/apiCliente/registrar",
         {
@@ -69,7 +67,6 @@ export default function Registrar() {
           redirect: false,
         }
       );
-      console.log(res);
       if (res.status === 200) {
         const res = await signIn("credentials", {
           nombre: datos.nombre,
