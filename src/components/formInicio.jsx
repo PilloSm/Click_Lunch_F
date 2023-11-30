@@ -126,7 +126,6 @@ export default function FormInicio() {
         </button>
         <ReCAPTCHA
           sitekey="6LcY1x0pAAAAAJP9oTr0OHHCjlVu1ZIggttWZsYa "
-          className=""
           onChange={setCaptcha}
         />
       </div>

@@ -27,7 +27,9 @@ export default function FormComida({ comidas }) {
         .get(`${process.env.URL_USED}/api/apiCliente/menu/${comidas}`)
         .then((response) => {
           const data = response.data;
+          console.log(data)
           if (data) {
+            console.log(data[0])
             setPlatillo(data[0]);
           } else {
             console.error("La respuesta no contiene datos válidos.");
@@ -53,8 +55,10 @@ export default function FormComida({ comidas }) {
   };
 
   const handleSubmit = () => {
-    if (esNumero(comida.cantidad)) {
+    console.log(comida)
+    if (esNumero(comida.cantidad) && !comida.cantidad > 0) {
       setError("Como asi");
+      alert('dkjas')
       return;
     }
     if (session) {
