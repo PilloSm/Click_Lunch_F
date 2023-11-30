@@ -61,7 +61,7 @@ function AlimentoForm() {
   };
 
   useEffect(() => {
-    axios.get(`https://clicklunchf-production-2991.up.railway.app/api/apiCafeteria/ingredientes`).then((res) => {
+    axios.get(`http://localhost:3000/api/apiCafeteria/ingredientes`).then((res) => {
       const { nombre, descripcion, precio, imagen, ingredientes, tipos } =
         res.data;
       setComidaN({
@@ -137,7 +137,7 @@ function AlimentoForm() {
 
     try {
       const resultado = await axios.post(
-        `https://clicklunchf-production-2991.up.railway.app/api/apiCafeteria/Comida`,
+        `http://localhost:3000/api/apiCafeteria/Comida`,
         formData,
         {
           headers: {
