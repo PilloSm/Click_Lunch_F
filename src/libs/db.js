@@ -5,6 +5,7 @@ export const conn = createPool({
   user: 'root',
   host: 'localhost',
   password: 'LuMITY_BV1',
+  port: 3306,
   ssl: {
     rejectUnauthorized: false,
   },
