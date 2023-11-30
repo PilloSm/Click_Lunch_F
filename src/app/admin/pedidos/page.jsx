@@ -46,8 +46,8 @@ async function Pedidos() {
       <div className="w-full max-w-[1440px] h-full flex flex-wrap justify-around bg-white relative">
 
       <div className="h-[120px] w-[120px] flex flex-col items-center justify-center font-nunito font-bold text-black text-center leading-normal tracking-normal">
-        <div className="absolute text-[36px]">Pedidos</div>
-      </div>
+      <div className="absolute text-[36px]">Pedidos</div>
+    </div>
 
         <div className="absolute w-full md:w-[431px] top-[202px] left-[50%] md:left-[572px] font-nunito font-normal text-black text-[60px] text-center leading-normal tracking-normal"></div>
         
@@ -65,9 +65,9 @@ async function Pedidos() {
             />
           ))}
         </div>
-        <div className="absolute w-[431px] top-[820px] left-[570px] font-nunito font-normal text-black text-[64px] text-center leading-normal tracking-normal"></div>
+        <div className="absolute w-full md:w-[431px] top-[820px] left-[50%] md:left-[570px] font-nunito font-normal text-black text-[64px] text-center leading-normal tracking-normal"></div>
 
-        <div className="flex relative w-[6000px] h-[480px] flex flex-nowrap overflow-scroll justify-start overflow-x-scroll overflow-y-hidden">
+        <div className="flex relative w-full md:w-[6000px] h-[480px] flex flex-nowrap overflow-scroll justify-start overflow-x-scroll overflow-y-hidden">
           {data2.data.map((detalle) => {
             <CardPedidos
               key={detalle.id_pedido} 
@@ -81,7 +81,7 @@ async function Pedidos() {
 
         <div className="absolute w-full md:w-[431px] top-[1420px] left-[50%] md:left-[570px] font-nunito font-normal text-black text-[64px] text-center leading-normal tracking-normal"></div>
 
-        <div className="relative w-[6000px] h-[480px] flex flex-nowrap overflow-scroll justify-start overflow-x-scroll overflow-y-hidden">
+        <div className="relative w-full md:w-[6000px] h-[480px] flex flex-nowrap overflow-scroll justify-start overflow-x-scroll overflow-y-hidden">
           {data3.data.map((detalle) => {
             <CardPedidos
               key={detalle.id_pedido} 
