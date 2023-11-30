@@ -9,16 +9,16 @@ async function Pedidos() {
   const fetchData = async () => {
     try {
       const res1 = await axios.get(
-        `${process.env.URL_USED}/api/apiCafeteria/pedidos/2`
+        `http://localhost/3000/api/apiCafeteria/pedidos/2`
       );
       const res2 = await axios.get(
-        `${process.env.URL_USED}/api/apiCafeteria/pedidos/3`
+        `http://localhost/3000/api/apiCafeteria/pedidos/3`
       );
       const res3 = await axios.get(
-        `${process.env.URL_USED}/api/apiCafeteria/pedidos/4`
+        `http://localhost/3000/api/apiCafeteria/pedidos/4`
       );
       const res4 = await axios.get(
-        `${process.env.URL_USED}/api/apiCafeteria/pedidos/5`
+        `http://localhost/3000/api/apiCafeteria/pedidos/5`
       );
 
       setData1(res1.data);

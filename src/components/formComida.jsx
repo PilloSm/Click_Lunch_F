@@ -24,7 +24,7 @@ export default function FormComida({ comidas }) {
   const fetchData = () => {
     try {
       axios
-        .get(`${process.env.URL_USED}/api/apiCliente/menu/${comidas}`)
+        .get(`http://localhost/3000/api/apiCliente/menu/${comidas}`)
         .then((response) => {
           const data = response.data;
           console.log(data)
