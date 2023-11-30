@@ -2,8 +2,7 @@
 import axios from "axios";
 import { useRef, useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
-import { esCorreoElectronico, esNumero, soloLetras } from "@/libs/val";
-import Image from "next/image";
+import { esNumero, soloLetras } from "@/libs/val";
 function AlimentoForm() {
   const [error, setError] = useState("");
   const [numeroIteraciones, setNumeroIteraciones] = useState(1);

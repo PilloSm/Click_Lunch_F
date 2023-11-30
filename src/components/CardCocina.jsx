@@ -1,8 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { useState } from "react";
-
 const CardCocina = ({ comidas }) => {
   return (
     <Link href={`/client/comida?comida=${comidas.id_comidas}`}>

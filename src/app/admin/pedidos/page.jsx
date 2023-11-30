@@ -1,6 +1,5 @@
 import CardPedidos from "@/components/CardPedidos";
 import axios from "axios";
-import { useState } from "react";
 
 async function Pedidos() {
   const [data1, setData1] = useState([]);

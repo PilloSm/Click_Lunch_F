@@ -1,6 +1,5 @@
 import axios from "axios";
 import CardCocina from "@/components/CardCocina";
-import { useState } from "react";
 async function Menu() {
   const res = await axios.get(`http://localhost/3000/api/apiCliente/menu`);
   const comidas = res.data;
