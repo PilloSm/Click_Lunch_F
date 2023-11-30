@@ -1,10 +1,10 @@
 import { createPool } from "mysql2/promise";
 
 export const conn = createPool({
-  database: "clicklunch",
-  user: process.env.DATABASE_USERNAME,
-  host: process.env.DATABASE_HOST,
-  password: process.env.DATABASE_PASSWORD,
+  database: "clickluch",
+  user: 'root',
+  host: 'localhost',
+  password: 'LuMITY_BV1',
   ssl: {
     rejectUnauthorized: false,
   },
