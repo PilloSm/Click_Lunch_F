@@ -1,3 +1,4 @@
+"use client"
 import CardPedidos from "@/components/CardPedidos";
 import axios from "axios";
 import { useState, useEffect } from "react";
