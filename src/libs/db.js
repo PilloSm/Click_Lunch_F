@@ -2,10 +2,10 @@ import { createPool } from "mysql2/promise";
 
 export const conn = createPool({
   database: "clicklunch",
-  user: process.env.DATABASE_USERNAME,
-  host: process.env.DATABASE_HOST,
-  password: process.env.DATABASE_PASSWORD,
-  ssl:{
-    rejectUnauthorized:false
-  }
+  user: "ezafa6bhhv1pma4j8zpp",
+  host: "aws.connect.psdb.cloud",
+  password: "pscale_pw_Mi4Y16Vu1rRrRcNSwEDZp9hHqjAltKE6oc9T5NLZIsa",
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
