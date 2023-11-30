@@ -1,12 +1,7 @@
 import React from "react";
 import BtnOpciones from "./BtnOpciones";
-
-const BarraSuperior = () => {
-  const lista = () => {
-    const res = axios.get("/api/apiCliente/menu");
-    const datos = res.data;
-  };
-
+import Image from "next/image";
+export default function BarraSuperior () {
   return (
     <div>
       <BtnOpciones />
@@ -46,5 +41,3 @@ const BarraSuperior = () => {
     </div>
   );
 };
-
-export default BarraSuperior;

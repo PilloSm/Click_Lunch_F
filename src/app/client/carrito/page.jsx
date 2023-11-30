@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import BtnOpciones from "../../../components/BtnOpciones";
 import { useSession } from "next-auth/react";
 import BtonPedir from "@/components/btonPedis";
-
+import Image from "next/image";
 function Carrito() {
   const { data: session, update } = useSession();
   const carrito = session.user.carrito;
@@ -61,7 +61,7 @@ function Carrito() {
                         handleE(item.id_comida);
                       }}
                     >
-                      <img src="/img/carrito/borrar-1.png" />
+                      <Image src="/img/carrito/borrar-1.png" />
                     </button>
                   </tr>
                 </>
@@ -88,19 +88,11 @@ function Carrito() {
         <div className="babsolute w-[893px] h-[88px] top-[743px] left-[567px]">
           <BtonPedir
             onClick={() => {
-              const handleE = () => {
-                const carritoN = {
-                  total: 0,
-                  comidas: [],
-                };
-                update({ carrito: carritoN });
-              };
               if (session.user.saldo < session.user.carrito.total) {
                 setError("sa");
                 return;
               } else {
                 handleE(item.id_comida);
-                
               }
             }}
             saldo={session.user.saldo}

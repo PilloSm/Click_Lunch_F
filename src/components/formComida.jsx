@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { esNumero } from "@/libs/val";
-
+import Image from "next/image";
 export default function FormComida({ comidas }) {
   const router = useRouter();
   const [error, setError] = useState("");
@@ -24,10 +24,12 @@ export default function FormComida({ comidas }) {
   const fetchData = () => {
     try {
       axios
-        .get(`http://localhost:3000/api/apiCliente/menu/${comidas}`)
+        .get(`http://localhost/3000/api/apiCliente/menu/${comidas}`)
         .then((response) => {
           const data = response.data;
+          console.log(data)
           if (data) {
+            console.log(data[0])
             setPlatillo(data[0]);
           } else {
             console.error("La respuesta no contiene datos válidos.");
@@ -43,7 +45,7 @@ export default function FormComida({ comidas }) {
 
   useEffect(() => {
     fetchData();
-  }, [comidas.id_comida, session]);
+  }, [fetchData, comidas.id_comida, session]);
 
   const handleChange = (e) => {
     setComida({
@@ -53,8 +55,10 @@ export default function FormComida({ comidas }) {
   };
 
   const handleSubmit = () => {
-    if (esNumero(comida.cantidad)) {
+    console.log(comida)
+    if (esNumero(comida.cantidad) && !comida.cantidad > 0) {
       setError("Como asi");
+      alert('dkjas')
       return;
     }
     if (session) {
@@ -83,7 +87,7 @@ export default function FormComida({ comidas }) {
         {platillo.nombre}
       </div>
       <p className="absolute w-[595px] top-[101px] h-[250px] left-[115px] border border-black p-4 text-black rounded-[50px]">
-    {platillo.descripcion}
+        {platillo.descripcion}
       </p>
 
       <p className="absolute w-[325px] top-[387px] left-[119px] font-nunito font-nunito font-bold text-black text-[64px] leading-normal tracking-normal">
@@ -111,7 +115,11 @@ export default function FormComida({ comidas }) {
       </div>
 
       <div className="absolute w-[589px] h-[373px] top-[59px] left-[790px] bg-white">
-      <img className="absolute w-[386px] h-[223px] top-[27px] left-[24px] object-cover;" src={platillo.imagen} alt={platillo.nombre} ></img>
+        <img
+          className="absolute w-[386px] h-[223px] top-[27px] left-[24px] object-cover;"
+          src={platillo.imagen}
+          alt={platillo.nombre}
+        />
       </div>
 
       <button

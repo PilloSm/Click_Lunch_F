@@ -10,6 +10,7 @@ import {
   esCorreoElectronico,
   soloLetras,
 } from "@/libs/val";
+import Image from "next/image";
 import ReCAPTCHA from "react-google-recaptcha";
 export default function Registrar() {
   const [captcha, setCaptcha] = useState();
@@ -61,7 +62,7 @@ export default function Registrar() {
     }
     if (datos.password === datos.password2) {
       const res = await axios.post(
-        "http://localhost:3000/api/apiCliente/registrar",
+        "/api/apiCliente/registrar",
         {
           ...datos,
           redirect: false,
@@ -73,7 +74,7 @@ export default function Registrar() {
           email: datos.email,
           password: datos.password,
           redirect: false,
-          callbackUrl: "http://localhost:3000/menu ",
+          callbackUrl: "/menu ",
         });
         if (res.error) return console.log(res.error);
       }
@@ -152,7 +153,7 @@ export default function Registrar() {
             onClick={() => {
               if (captcha) {
                 const res = signIn("google", {
-                  callbackUrl: "http://localhost:3000/menu ",
+                  callbackUrl: "/menu ",
                 });
               } else {
                 alert("Ingresa el captcha");

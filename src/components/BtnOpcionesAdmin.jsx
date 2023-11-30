@@ -3,6 +3,7 @@ import React from "react";
 import { useState } from "react";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
+import Image from "next/image";
 const BtnOpcionesAdmin = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -11,7 +12,7 @@ const BtnOpcionesAdmin = () => {
         onClick={() => setIsOpen(!isOpen)}
         className="w-50 h-50 cursor-pointer bg-transparent border-none"
       >
-        <img src="https://i.ibb.co/hmdxg59/btn-opciones.png" alt="menu" />
+        <img width={50} height={50} src="https://i.ibb.co/hmdxg59/btn-opciones.png" alt="menu" />
       </button>
 
       {isOpen && (
@@ -29,7 +30,7 @@ const BtnOpcionesAdmin = () => {
                   href="/admin/pedidos"
                   className="text-gray-300 hover:bg-gray-800 hover:border-l-4 hover:border-gray-300 hover:text-white block p-2 transition duration-200"
                 >
-                  <img
+                  <img width={50} height={50}
                     className="pl-[4px]"
                     src="/img/sidebar/icon-pedidos.png"
                     alt=""
@@ -41,7 +42,7 @@ const BtnOpcionesAdmin = () => {
                   href="/admin/agregarSaldo"
                   className="text-gray-300 hover:bg-gray-800 hover:border-l-4 hover:border-gray-300 hover:text-white block p-2 transition duration-200"
                 >
-                  <img
+                  <img width={50} height={50}
                     className="pl-[4px]"
                     src="/img/sidebar/cartera-icon2.png"
                     alt=""
@@ -53,7 +54,7 @@ const BtnOpcionesAdmin = () => {
                   href="/admin/comidas"
                   className="text-gray-300 hover:bg-gray-800 hover:border-l-4 hover:border-gray-300 hover:text-white block p-2 transition duration-200"
                 >
-                  <img
+                  <img width={50} height={50}
                     className="pl-[4px]"
                     src="/img/sidebar/icons8-barra-de-comida-24.png"
                     alt=""
@@ -65,7 +66,7 @@ const BtnOpcionesAdmin = () => {
                   href="/admin/ingredientes"
                   className="text-gray-300 hover:bg-gray-800 hover:border-l-4 hover:border-gray-300 hover:text-white block p-2 transition duration-200"
                 >
-                  <img
+                  <img width={50} height={50}
                     className="pl-[4px]"
                     src="/img/sidebar/lechuga.png"
                     alt=""
@@ -77,7 +78,7 @@ const BtnOpcionesAdmin = () => {
                   href="/admin/actualizarIngredientes"
                   className="text-gray-300 hover:bg-gray-800 hover:border-l-4 hover:border-gray-300 hover:text-white block p-2 transition duration-200"
                 >
-                  <img
+                  <img width={50} height={50}
                     className="pl-[4px]"
                     src="/img/sidebar/icons8-actualizar-30.png"
                     alt=""
@@ -91,7 +92,7 @@ const BtnOpcionesAdmin = () => {
                     signOut();
                   }}
                 >
-                  <img
+                  <img width={50} height={50}
                     className="pl-[4px]"
                     src="/img/sidebar/logout.png"
                     alt=""

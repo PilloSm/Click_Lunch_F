@@ -1,7 +1,5 @@
 import React from "react";
-import BtnOpcionesAdmin from "./BtnOpcionesAdmin";
-
-export const BarraSuperiorAdmin = () => {
+export async function BarraSuperiorAdmin() {
   return (
     <div>
       <div className="absolute w-[1040px] h-[64px] top-[71px] left-[209px]">
@@ -20,6 +18,6 @@ export const BarraSuperiorAdmin = () => {
       </div>
     </div>
   );
-};
+}
 
 export default BarraSuperiorAdmin;

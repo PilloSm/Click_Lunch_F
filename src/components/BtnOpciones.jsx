@@ -12,7 +12,8 @@ const BtnOpciones = () => {
         onClick={() => setIsOpen(!isOpen)}
         className="w-50 h-50 cursor-pointer bg-transparent border-none"
       >
-        <img src="https://i.ibb.co/hmdxg59/btn-opciones.png" alt="menu" />
+        <img
+         src="https://i.ibb.co/hmdxg59/btn-opciones.png" alt="menu" />
       </button>
 
       {isOpen && (

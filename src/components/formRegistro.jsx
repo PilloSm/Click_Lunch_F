@@ -17,7 +17,7 @@ export default function FormularioRegistro() {
     if (credentials.password === credentials.password2) {
       try {
         const res = await axios.post(
-          "http://localhost:3000/api/apiiCliente/registrar",
+          "/api/apiiCliente/registrar",
           credentials
         );
         const result= await signIn('credentials',credentials)

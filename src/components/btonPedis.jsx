@@ -6,7 +6,7 @@ export default function BtonPedir({ carrito, id_cuenta, saldo }) {
   const handleSubmit = async () => {
     if (datos.total <= saldo) {
       const res = await axios.post(
-        "http://localhost:3000/api/apiCliente/pedido",
+        "/api/apiCliente/pedido",
         datos
       );
       if (res.error) return console.log(error);
@@ -17,11 +17,6 @@ export default function BtonPedir({ carrito, id_cuenta, saldo }) {
   };
 
   return (
-    <Link
-      href={
-        error ? "/client/carrito" : "/client/informacion?borrar=si"
-      }
-    >
       <button
         onClick={handleSubmit}
         className="absolute w-[528px] h-[95px] top-[759px] left-[426px] bg-[#25a18ee6] rounded-full border-none cursor-pointer"
@@ -30,6 +25,5 @@ export default function BtonPedir({ carrito, id_cuenta, saldo }) {
           Pedir
         </div>
       </button>
-    </Link>
   );
 }

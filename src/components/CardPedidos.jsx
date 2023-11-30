@@ -13,13 +13,13 @@ export default function CardPedidos({
 }) {
   const handleEditar = async (e) => {
     const res = await axios.put(
-      `http://localhost:3000/api/apiCafeteria/cambiarEstadoPedido/${id_pedido}`,
+      `/api/apiCafeteria/cambiarEstadoPedido/${id_pedido}`,
       { estado: estado_actual_id }
     );
   };
   const handleCancelar = async (e) => {
     const res = await axios.post(
-      `http://localhost:3000/api/apiCafeteria/cambiarEstadoPedido/${id_pedido}`,
+      `/api/apiCafeteria/cambiarEstadoPedido/${id_pedido}`,
       { estado: 1 }
     );
 

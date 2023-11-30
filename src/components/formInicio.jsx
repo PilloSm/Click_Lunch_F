@@ -1,8 +1,7 @@
 "use client";
-import { User, Lock, Mail } from "lucide-react";
-import { signIn, useSession } from "next-auth/react";
+import {  Lock, Mail } from "lucide-react";
+import { signIn, } from "next-auth/react";
 import { useState } from "react";
-import logo from "../../public/img/index/logo.png";
 import Link from "next/link";
 import ReCAPTCHA from "react-google-recaptcha";
 import { esContrasenaValida, esCorreoElectronico } from "@/libs/val";
@@ -21,25 +20,25 @@ export default function FormInicio() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // if (!credentials.email || !credentials.password) {
-    //   setError("Todos los campos son obligatorios.");
-    //   return;
-    // }
+    if (!credentials.email || !credentials.password) {
+      setError("Todos los campos son obligatorios.");
+      return;
+    }
 
-    // if (!esCorreoElectronico(credentials.email)) {
-    //   setError("Ingresa un correo electrónico válido.");
-    //   return;
-    // }
+    if (!esCorreoElectronico(credentials.email)) {
+      setError("Ingresa un correo electrónico válido.");
+      return;
+    }
 
-    // if (!esContrasenaValida(credentials.password)) {
-    //   setError("La contraseña debe tener al menos 6 caracteres.");
-    //   return;
-    // }
+    if (!esContrasenaValida(credentials.password)) {
+      setError("La contraseña debe tener al menos 6 caracteres.");
+      return;
+    }
     if (captcha) {
       try {
         const res = await signIn("credentials", {
           ...credentials,
-          callbackUrl: "http://localhost:3000/menu ",
+          callbackUrl: "/menu ",
         });
         if (res?.error) setError(res.error);
       } catch (error) {
@@ -108,7 +107,7 @@ export default function FormInicio() {
           onClick={() => {
             if (captcha) {
               signIn("google", {
-                callbackUrl: "http://localhost:3000/menu ",
+                callbackUrl: "/menu ",
               });
             } else {
               alert("Ingresa el captcha");
@@ -127,7 +126,6 @@ export default function FormInicio() {
         </button>
         <ReCAPTCHA
           sitekey="6LcY1x0pAAAAAJP9oTr0OHHCjlVu1ZIggttWZsYa "
-          className=""
           onChange={setCaptcha}
         />
       </div>
