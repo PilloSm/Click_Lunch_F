@@ -2,16 +2,16 @@ import CardPedidos from "@/components/CardPedidos";
 import axios from "axios";
 async function Pedidos() {
   const res1 = await axios.get(
-    "/api/apiCafeteria/pedidos/2"
+    "http://localhost:3000/api/apiCafeteria/pedidos/2"
   );
   const res2 = await axios.get(
     "/api/apiCafeteria/pedidos/3"
   );
   const res3 = await axios.get(
-    "/api/apiCafeteria/pedidos/4"
+    "http://localhost:3000/api/apiCafeteria/pedidos/4"
   );
   const res4 = await axios.get(
-    "/api/apiCafeteria/pedidos/5"
+    "http://localhost:3000/api/apiCafeteria/pedidos/5"
   );
   return (
     <div className="bg-white flex flex-row justify-center w-full">

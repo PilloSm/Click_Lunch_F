@@ -30,7 +30,7 @@ function AgregarSaldoAdmin() {
     if (confirmacion.isConfirmed) {
       try {
         const res = await axios.put(
-          "/api/apiCafeteria/agregarSaldo",
+          "http://localhost:3000/api/apiCafeteria/agregarSaldo",
           datos
         );
 

@@ -62,7 +62,7 @@ function AlimentoForm() {
   };
 
   useEffect(() => {
-    axios.get(`/api/apiCafeteria/ingredientes`).then((res) => {
+    axios.get(`http://localhost:3000/api/apiCafeteria/ingredientes`).then((res) => {
       const { nombre, descripcion, precio, imagen, ingredientes, tipos } =
         res.data;
       setComidaN({
