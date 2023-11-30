@@ -61,7 +61,7 @@ function AlimentoForm() {
   };
 
   useEffect(() => {
-    axios.get(`http://localhost/3000/api/apiCafeteria/ingredientes`).then((res) => {
+    axios.get(`${NEXT_PUBLIC_BACKEND_URL}/api/apiCafeteria/ingredientes`).then((res) => {
       const { nombre, descripcion, precio, imagen, ingredientes, tipos } =
         res.data;
       setComidaN({
@@ -137,7 +137,7 @@ function AlimentoForm() {
 
     try {
       const resultado = await axios.post(
-        `http://localhost/3000/api/apiCafeteria/Comida`,
+        `${NEXT_PUBLIC_BACKEND_URL}/api/apiCafeteria/Comida`,
         formData,
         {
           headers: {

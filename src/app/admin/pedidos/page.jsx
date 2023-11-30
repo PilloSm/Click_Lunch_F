@@ -11,16 +11,16 @@ async function Pedidos() {
   const fetchData = async () => {
     try {
       const res1 = await axios.get(
-        `http://localhost/3000/api/apiCafeteria/pedidos/2`
+        `${NEXT_PUBLIC_BACKEND_URL}/api/apiCafeteria/pedidos/2`
       );
       const res2 = await axios.get(
-        `http://localhost/3000/api/apiCafeteria/pedidos/3`
+        `${NEXT_PUBLIC_BACKEND_URL}/api/apiCafeteria/pedidos/3`
       );
       const res3 = await axios.get(
-        `http://localhost/3000/api/apiCafeteria/pedidos/4`
+        `${NEXT_PUBLIC_BACKEND_URL}/api/apiCafeteria/pedidos/4`
       );
       const res4 = await axios.get(
-        `http://localhost/3000/api/apiCafeteria/pedidos/5`
+        `${NEXT_PUBLIC_BACKEND_URL}/api/apiCafeteria/pedidos/5`
       );
 
       setData1(res1.data);

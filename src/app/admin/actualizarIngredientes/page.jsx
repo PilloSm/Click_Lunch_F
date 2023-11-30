@@ -14,7 +14,7 @@ export default function Actualizar() {
   });
 
   useEffect(() => {
-    axios.get(`http://localhost/3000/api/apiCafeteria/ingredientes`).then((res) => {
+    axios.get(`${NEXT_PUBLIC_BACKEND_URL}/api/apiCafeteria/ingredientes`).then((res) => {
       const { nombre, descripcion, precio, ingredientes } = res.data;
       setComidaN({
         nombre,
@@ -77,7 +77,7 @@ export default function Actualizar() {
                         encontrado.cantidad = comidaN[encontrado.nombre];
 
                         const res = await axios.put(
-                          `http://localhost/3000/api/apiCafeteria/ingredientes`,
+                          `${NEXT_PUBLIC_BACKEND_URL}/api/apiCafeteria/ingredientes`,
                           {
                             cantidad: encontrado.cantidad,
                             id_ingrediente: encontrado.id_ingrediente,
