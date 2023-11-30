@@ -24,7 +24,7 @@ export default function FormComida({ comidas }) {
   const fetchData = () => {
     try {
       axios
-        .get(`${NEXT_PUBLIC_BACKEND_URL}/api/apiCliente/menu/${comidas}`)
+        .get(`clicklunchf-production-2991.up.railway.app/api/apiCliente/menu/${comidas}`)
         .then((response) => {
           const data = response.data;
           console.log(data)
