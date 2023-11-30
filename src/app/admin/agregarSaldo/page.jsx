@@ -30,7 +30,7 @@ function AgregarSaldoAdmin() {
     if (confirmacion.isConfirmed) {
       try {
         const res = await axios.put(
-          `clicklunchf-production-2991.up.railway.app/api/apiCafeteria/agregarSaldo`,
+          `https://clicklunchf-production-2991.up.railway.app/api/apiCafeteria/agregarSaldo`,
           datos
         );
 

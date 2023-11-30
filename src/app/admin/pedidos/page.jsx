@@ -11,16 +11,16 @@ async function Pedidos() {
   const fetchData = async () => {
     try {
       const res1 = await axios.get(
-        `clicklunchf-production-2991.up.railway.app/api/apiCafeteria/pedidos/2`
+        `https://clicklunchf-production-2991.up.railway.app/api/apiCafeteria/pedidos/2`
       );
       const res2 = await axios.get(
-        `clicklunchf-production-2991.up.railway.app/api/apiCafeteria/pedidos/3`
+        `https://clicklunchf-production-2991.up.railway.app/api/apiCafeteria/pedidos/3`
       );
       const res3 = await axios.get(
-        `clicklunchf-production-2991.up.railway.app/api/apiCafeteria/pedidos/4`
+        `https://clicklunchf-production-2991.up.railway.app/api/apiCafeteria/pedidos/4`
       );
       const res4 = await axios.get(
-        `clicklunchf-production-2991.up.railway.app/api/apiCafeteria/pedidos/5`
+        `https://clicklunchf-production-2991.up.railway.app/api/apiCafeteria/pedidos/5`
       );
 
       setData1(res1.data);

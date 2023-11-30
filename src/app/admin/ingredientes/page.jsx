@@ -33,7 +33,7 @@ export default function Ingredientes() {
     e.preventDefault();
     console.log(datos)
     const res = await axios.post(
-      `clicklunchf-production-2991.up.railway.app/api/apiCafeteria/crearIngrediente`,
+      `https://clicklunchf-production-2991.up.railway.app/api/apiCafeteria/crearIngrediente`,
       datos
     );
     if (res.data) {
