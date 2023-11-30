@@ -44,11 +44,13 @@ async function Pedidos() {
   return (
     <div className="bg-white flex flex-row justify-center w-full">
       <div className="w-[1440px] h-full flex flex-wrap justify-around bg-white relative">
-        <div className="absolute top-[62px] left-[582px] font-nunito font-normal text-black text-[60px] text-center leading-normal tracking-normal">
-          Pedidos
-        </div>
+
+      <div className="h-[120px] w-[120px] flex flex-col items-center justify-center font-nunito font-bold text-black text-center leading-normal tracking-normal">
+      <div className="absolute text-[36px]">Pedidos</div>
+      </div>
+
         <div className="absolute w-[431px] top-[202px] left-[572px] font-nunito font-normal text-black text-[60px] text-center leading-normal tracking-normal"></div>
-        <div className="top-[20px] relative w-[6000px] h-[480px] flex flex-nowrap overflow-scroll justify-start overflow-x-scroll overflow-y-hidden">
+        <div className="relative w-[6000px] h-[480px] flex flex-nowrap overflow-scroll justify-start overflow-x-scroll overflow-y-hidden">
           {data1.data.map((detalle) => (
             <CardPedidos
               key={detalle.id_pedido} // Agrega una clave única para cada elemento en el array
@@ -64,7 +66,7 @@ async function Pedidos() {
         </div>
         <div className="absolute w-[431px] top-[820px] left-[570px] font-nunito font-normal text-black text-[64px] text-center leading-normal tracking-normal"></div>
 
-        <div className="top-[-30px] relative w-[6000px] h-[480px] flex flex-nowrap overflow-scroll justify-start overflow-x-scroll overflow-y-hidden">
+        <div className="flex relative w-[6000px] h-[480px] flex flex-nowrap overflow-scroll justify-start overflow-x-scroll overflow-y-hidden">
           {data2.data.map((detalle) => {
             <CardPedidos
               key={detalle.id_pedido} 
@@ -72,13 +74,13 @@ async function Pedidos() {
               cantidades_detalles={detalle.cantidades_detalles}
               id_cuenta={detalle.id_cuenta}
               estado_siguiente_nombre={detalle.estado_siguiente_nombre}
-            />;
+            />
           })}
         </div>
 
         <div className="absolute w-[431px] top-[1420px] left-[570px] font-nunito font-normal text-black text-[64px] text-center leading-normal tracking-normal"></div>
 
-        <div className="top-[-50px] relative w-[6000px] h-[480px] flex flex-nowrap overflow-scroll justify-start overflow-x-scroll overflow-y-hidden">
+        <div className="relative w-[6000px] h-[480px] flex flex-nowrap overflow-scroll justify-start overflow-x-scroll overflow-y-hidden">
           {data3.data.map((detalle) => {
             <CardPedidos
               key={detalle.id_pedido} 
@@ -86,13 +88,13 @@ async function Pedidos() {
               cantidades_detalles={detalle.cantidades_detalles}
               id_cuenta={detalle.id_cuenta}
               estado_siguiente_nombre={detalle.estado_siguiente_nombre}
-            />;
+            />
           })}
         </div>
 
         <div className="absolute w-[431px] top-[2120px] left-[570px] font-nunito font-normal text-black text-[64px] text-center leading-normal tracking-normal"></div>
 
-        <div className="top-[-50px] relative w-[6000px] h-[480px] flex flex-nowrap overflow-scroll justify-start overflow-x-scroll overflow-y-hidden">
+        <div className="relative w-[6000px] h-[480px] flex flex-nowrap overflow-scroll justify-start overflow-x-scroll overflow-y-hidden">
           {data4.data.map((detalle) => {
             <CardPedidos
               key={detalle.id_pedido} 
@@ -100,7 +102,7 @@ async function Pedidos() {
               cantidades_detalles={detalle.cantidades_detalles}
               id_cuenta={detalle.id_cuenta}
               estado_siguiente_nombre={detalle.estado_siguiente_nombre}
-            />;
+            />
           })}
         </div>
       </div>
