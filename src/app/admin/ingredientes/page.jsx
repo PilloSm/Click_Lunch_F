@@ -33,7 +33,7 @@ export default function Ingredientes() {
     e.preventDefault();
     console.log(datos)
     const res = await axios.post(
-      "http://localhost:3000/api/apiCafeteria/crearIngrediente",
+      `${process.env.URL_USED}/api/apiCafeteria/crearIngrediente`,
       datos
     );
     if (res.data) {
