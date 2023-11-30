@@ -1,10 +1,10 @@
 import { createPool } from "mysql2/promise";
+import { processImage } from "./processImage";
 export const conn = createPool({
-  host: "localhost",
-  user: "root",
-  password: "n0m3l0",
-  port: 3308,
-  database: "clickluch",
+  host: process.env.DATABASE_HOST,
+  user: process.env.DATABASE_USERNAME,
+  password: process.env.DATABASE_PASSWORD,
+  database: "clicklunch",
 });
 
 // export const conn = createPool({

@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default async function TablaPedidos({ id_cuenta }) {
   const res = await axios.get(
-    `http://localhost/3000/api/apiCliente/pedido/${id_cuenta}`
+    `${NEXT_PUBLIC_BACKEND_URL}/3000/api/apiCliente/pedido/${id_cuenta}`
   );
   const resultadosTransformados = res.data.map((resultado) => {
     const cantidades = resultado.cantidades_detalles.split(",").map(Number);
